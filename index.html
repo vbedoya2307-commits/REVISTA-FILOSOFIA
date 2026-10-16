@@ -1,0 +1,2680 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUMEN - Revista de Filosofía | La Luz de la Verdad</title>
+    <!-- Google Fonts para tipografía editorial de alto nivel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-primary: #0a0c10;
+            --bg-card: #14171f;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --accent-gold: #d4af37;
+            --accent-gold-light: #f3e5ab;
+            --accent-crimson: #e63946;
+            --accent-cyan: #38bdf8;
+            --border-color: #272d3d;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        /* -------------------------------------------------------------
+           ESTILOS DE LA PORTADA (PÁGINA 1: COVER PAGE LIMPIA)
+        ------------------------------------------------------------- */
+        .cover-page {
+            max-width: 900px;
+            width: 100%;
+            background-color: var(--bg-card);
+            border: 2px solid var(--accent-gold);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.85);
+            border-radius: 12px;
+            overflow: hidden;
+            padding: 2.5rem;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .cover-header {
+            width: 100%;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cover-tag {
+            font-size: 0.9rem;
+            letter-spacing: 4px;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+            display: block;
+        }
+
+        .cover-title {
+            font-family: 'Cinzel', serif;
+            font-size: 5rem;
+            font-weight: 900;
+            letter-spacing: 12px;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            line-height: 1;
+            text-shadow: 0 4px 25px rgba(212, 175, 55, 0.35);
+        }
+
+        .cover-subtitle {
+            font-family: 'Newsreader', serif;
+            font-style: italic;
+            font-size: 1.5rem;
+            color: var(--accent-gold-light);
+            margin-top: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .cover-artwork-hero {
+            width: 100%;
+            max-width: 580px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid var(--accent-gold);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+            margin: 1rem 0;
+        }
+
+        .cover-artwork-hero img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .cover-footer {
+            width: 100%;
+            border-top: 2px solid var(--accent-gold);
+            padding-top: 1rem;
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .cover-footer strong {
+            color: var(--accent-gold);
+        }
+
+        /* -------------------------------------------------------------
+           ESTILOS SECCIÓN DERECHOS HUMANOS (PÁGINA 2)
+        ------------------------------------------------------------- */
+        .rights-container {
+            max-width: 1100px;
+            width: 100%;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+            border-radius: 12px;
+            overflow: hidden;
+            padding: 2.5rem;
+            box-sizing: border-box;
+        }
+
+        .rights-header {
+            text-align: center;
+            margin-bottom: 1.8rem;
+            border-bottom: 2px solid var(--accent-gold);
+            padding-bottom: 1rem;
+        }
+
+        .rights-main-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.3rem;
+            color: var(--accent-gold);
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 0.4rem;
+        }
+
+        .rights-hero-image {
+            width: 100%;
+            max-width: 650px;
+            margin: 0 auto 1.8rem auto;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid var(--accent-gold);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+        }
+
+        .rights-hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Árbol de derechos con círculos enlazados */
+        .rights-tree {
+            position: relative;
+            width: 100%;
+            max-width: 680px;
+            margin: 0 auto;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid var(--accent-gold);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+        }
+
+        .rights-tree-img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .tree-node {
+            position: absolute;
+            width: 15.63%;
+            aspect-ratio: 1 / 1;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--accent-gold);
+            background: #fff8e7;
+            box-shadow: 0 0 0 3px rgba(255, 248, 231, 0.85), 0 6px 16px rgba(0, 0, 0, 0.45);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+            animation: nodeGlow 3s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        .tree-node img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .tree-node:hover {
+            transform: scale(1.14);
+            z-index: 2;
+            animation: none;
+            box-shadow: 0 0 0 3px #fff8e7, 0 0 28px rgba(212, 175, 55, 0.9), 0 10px 24px rgba(0, 0, 0, 0.5);
+        }
+
+        .tree-node:hover img { transform: scale(1.08); }
+
+        .tree-node:focus-visible {
+            outline: 3px solid var(--accent-cyan);
+            outline-offset: 3px;
+        }
+
+        @keyframes nodeGlow {
+            0%, 100% { box-shadow: 0 0 0 3px rgba(255, 248, 231, 0.85), 0 6px 16px rgba(0, 0, 0, 0.45); }
+            50% { box-shadow: 0 0 0 3px rgba(255, 248, 231, 0.85), 0 0 22px rgba(212, 175, 55, 0.75); }
+        }
+
+        .rights-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .rights-link-card {
+            display: block;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid var(--border-color);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            background: #0b0d12;
+            cursor: pointer;
+        }
+
+        .rights-link-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--accent-gold);
+            box-shadow: 0 18px 40px rgba(212, 175, 55, 0.4);
+        }
+
+        .rights-link-card img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .rights-caption {
+            display: block;
+            text-align: center;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--accent-gold-light);
+            padding: 0.4rem 0.5rem;
+            background: #0b0d12;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* -------------------------------------------------------------
+           ESTILOS SECCIÓN PODER (PÁGINA 3: ARTE VISUAL PURO)
+        ------------------------------------------------------------- */
+        .power-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .power-header-area {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            width: 100%;
+        }
+
+        .power-main-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #ffffff;
+            margin: 0.2rem 0;
+            text-transform: uppercase;
+        }
+
+        .power-main-title span {
+            color: var(--accent-gold);
+        }
+
+        .power-artwork-container {
+            width: 100%;
+            max-width: 680px;
+            margin: 0 auto;
+            position: relative;
+            background: #06070a;
+            border: 2px solid var(--accent-gold);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(212, 175, 55, 0.2);
+            cursor: pointer;
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+        }
+
+        .power-artwork-container:hover {
+            transform: translateY(-5px) scale(1.01);
+            border-color: #f3e5ab;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 40px rgba(212, 175, 55, 0.35);
+        }
+
+        .power-artwork-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+            transition: transform 0.4s ease;
+        }
+
+        .power-artwork-container:hover .power-artwork-img {
+            transform: scale(1.02);
+        }
+
+        .power-artwork-zoom-badge {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: rgba(10, 12, 16, 0.88);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold-light);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.4rem 0.9rem;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+            pointer-events: none;
+            letter-spacing: 0.5px;
+        }
+
+        /* MODAL LIGHTBOX FULLSCREEN */
+        .collage-modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            inset: 0;
+            background: rgba(4, 5, 8, 0.95);
+            backdrop-filter: blur(10px);
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .collage-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content-wrap {
+            position: relative;
+            max-width: 90vw;
+            max-height: 94vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: modalPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes modalPop {
+            from { transform: scale(0.92); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            background: var(--accent-gold);
+            color: #000;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 1.15rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease, background 0.2s ease;
+            z-index: 10;
+        }
+
+        .modal-close-btn:hover {
+            transform: scale(1.15) rotate(90deg);
+            background: #fff;
+        }
+
+        .modal-img {
+            max-width: 100%;
+            max-height: 85vh;
+            border: 2px solid var(--accent-gold);
+            border-radius: 8px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9);
+            object-fit: contain;
+        }
+
+        .modal-caption {
+            margin-top: 0.8rem;
+            color: var(--accent-gold-light);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            font-family: 'Cinzel', serif;
+            text-align: center;
+        }
+
+        /* PÁGINA 4: CANCIÓN + DOCUMENTAL */
+        .media-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+        }
+
+        .media-card {
+            background: linear-gradient(160deg, #181b22, #0f1117);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.4rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .media-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 14px 30px rgba(212, 175, 55, 0.25);
+        }
+
+        .song-card { border-top: 4px solid var(--accent-crimson); }
+        .doc-card { border-top: 4px solid var(--accent-cyan); }
+        .media-icon { font-size: 2.6rem; }
+
+        .media-tag {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+        }
+
+        .media-card h3 { font-family: 'Cinzel', serif; color: #ffffff; font-size: 1.25rem; }
+        .media-artist { font-size: 0.8rem; color: var(--accent-gold-light); font-style: italic; }
+        .media-card p { font-family: 'Newsreader', serif; font-size: 1rem; color: #d1d5db; }
+
+        .media-btn {
+            margin-top: 0.5rem;
+            display: inline-block;
+            background: var(--accent-gold);
+            color: #000;
+            padding: 0.55rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .media-btn:hover { background: #e6c247; transform: translateY(-2px); }
+
+        .connection-box {
+            margin-top: 1.4rem;
+            background: linear-gradient(135deg, rgba(230, 57, 70, 0.1), rgba(212, 175, 55, 0.1));
+            border: 1px solid var(--accent-gold);
+            border-radius: 10px;
+            padding: 1.2rem;
+        }
+
+        .connection-box h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-gold);
+            text-align: center;
+            font-size: 1.15rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .connection-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.9rem;
+            font-size: 0.88rem;
+            color: var(--text-main);
+        }
+
+        .connection-grid strong { color: var(--accent-gold); }
+
+        /* GUÍA DE VISIONADO RUTA DE MINUTOS DOCUMENTAL */
+        .doc-guide-box {
+            margin-top: 1.4rem;
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.08), rgba(20, 23, 31, 0.95));
+            border: 1px solid var(--accent-cyan);
+            border-radius: 10px;
+            padding: 1.4rem;
+        }
+
+        .doc-guide-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 1.2rem;
+            border-bottom: 1px solid rgba(56, 189, 248, 0.3);
+            padding-bottom: 0.7rem;
+        }
+
+        .doc-guide-title {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-cyan);
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .doc-badge-pill {
+            background: rgba(56, 189, 248, 0.18);
+            border: 1px solid var(--accent-cyan);
+            color: #ffffff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.25rem 0.8rem;
+            border-radius: 50px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .doc-timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1rem;
+        }
+
+        .doc-timestamp-card {
+            background: #0d1017;
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--accent-cyan);
+            border-radius: 8px;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            transition: transform 0.25s ease, border-color 0.25s ease;
+        }
+
+        .doc-timestamp-card:hover {
+            transform: translateY(-3px);
+            border-left-color: var(--accent-gold);
+            border-color: rgba(212, 175, 55, 0.4);
+        }
+
+        .timestamp-badge {
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .timestamp-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .timestamp-desc {
+            font-family: 'Newsreader', serif;
+            font-size: 0.92rem;
+            color: #cbd5e1;
+            line-height: 1.4;
+        }
+
+        .timestamp-collage-link {
+            font-size: 0.78rem;
+            color: var(--accent-cyan);
+            background: rgba(56, 189, 248, 0.08);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            border: 1px dashed rgba(56, 189, 248, 0.3);
+            margin-top: 0.3rem;
+        }
+
+        /* MATRIZ DE CONEXIÓN CUÁDRUPLE (COLLAGE - CANCIÓN - DOC - FOUCAULT) */
+        .matrix-box {
+            margin-top: 1.6rem;
+            background: #0d0f14;
+            border: 1px solid var(--accent-gold);
+            border-radius: 10px;
+            padding: 1.4rem;
+        }
+
+        .matrix-title {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-gold);
+            text-align: center;
+            font-size: 1.3rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .matrix-subtitle {
+            font-family: 'Newsreader', serif;
+            font-style: italic;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .matrix-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+        }
+
+        .matrix-pillar-card {
+            background: #141720;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .matrix-pillar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--accent-crimson));
+        }
+
+        .pillar-header {
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--accent-gold-light);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .pillar-row {
+            font-size: 0.85rem;
+            line-height: 1.4;
+            color: #d1d5db;
+        }
+
+        .pillar-row strong {
+            color: var(--accent-gold);
+            display: block;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.15rem;
+        }
+
+        .matrix-synthesis-quote {
+            margin-top: 1.2rem;
+            padding: 0.9rem;
+            background: rgba(212, 175, 55, 0.08);
+            border-left: 3px solid var(--accent-gold);
+            border-radius: 4px;
+            font-family: 'Newsreader', serif;
+            font-style: italic;
+            font-size: 1rem;
+            text-align: center;
+            color: var(--accent-gold-light);
+        }
+
+        /* -------------------------------------------------------------
+           ESTILOS DEL JUEGO / TALLER EDITORIAL (PÁGINA 5)
+        ------------------------------------------------------------- */
+        .game-page {
+            border: 2px solid var(--accent-gold);
+            background: linear-gradient(180deg, #10131b 0%, #0a0c10 100%);
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+        }
+
+        .game-badge-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            background: rgba(20, 23, 31, 0.95);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1rem 1.4rem;
+        }
+
+        .game-status-tracker {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .score-pill {
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold-light);
+            font-weight: 700;
+            padding: 0.35rem 0.9rem;
+            border-radius: 50px;
+            font-family: 'Cinzel', serif;
+        }
+
+        .game-intro-text {
+            font-family: 'Newsreader', serif;
+            font-size: 1.05rem;
+            color: #d1d5db;
+            text-align: center;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .game-instructions-box {
+            background: rgba(15, 17, 23, 0.8);
+            border: 1px dashed var(--accent-gold);
+            border-radius: 8px;
+            padding: 0.9rem 1.2rem;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        /* FASE 1: TABLERO DE HILOS DEL PODER (MATCH TRÍADA) */
+        .match-columns-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            position: relative;
+        }
+
+        .match-column {
+            background: #12151d;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .match-column-title {
+            font-family: 'Cinzel', serif;
+            font-size: 0.95rem;
+            color: var(--accent-gold);
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+        }
+
+        .game-node-btn {
+            background: #181c26;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 0.85rem;
+            color: var(--text-main);
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+            font-size: 0.85rem;
+            user-select: none;
+        }
+
+        .game-node-btn:hover {
+            border-color: var(--accent-gold);
+            transform: translateX(3px);
+            background: #202533;
+        }
+
+        .game-node-btn.selected {
+            border-color: var(--accent-cyan);
+            background: rgba(56, 189, 248, 0.15);
+            box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+        }
+
+        .game-node-btn.matched {
+            border-color: var(--accent-gold);
+            background: rgba(212, 175, 55, 0.18);
+            box-shadow: 0 0 14px rgba(212, 175, 55, 0.45);
+            pointer-events: none;
+        }
+
+        .node-tag {
+            font-family: 'Cinzel', serif;
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .node-print-code {
+            position: absolute;
+            top: 6px;
+            right: 8px;
+            background: var(--border-color);
+            color: var(--accent-gold-light);
+            font-size: 0.7rem;
+            font-weight: bold;
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+        }
+
+        /* FASE 2: DECODIFICADOR DEL COLLAGE (TRIVIA CRÍTICA) */
+        .quiz-section {
+            background: #0f1219;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1.4rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .quiz-section-title {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        .quiz-card {
+            background: #151822;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+        }
+
+        .quiz-question-text {
+            font-weight: 600;
+            color: #ffffff;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .quiz-options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .quiz-option-label {
+            background: #1b1f2b;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 6px;
+            padding: 0.6rem 0.9rem;
+            font-size: 0.88rem;
+            color: #cbd5e1;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .quiz-option-label:hover {
+            border-color: var(--accent-gold);
+            background: #232838;
+        }
+
+        .quiz-option-label.correct {
+            border-color: #22c55e;
+            background: rgba(34, 197, 94, 0.15);
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .quiz-option-label.incorrect {
+            border-color: var(--accent-crimson);
+            background: rgba(230, 57, 70, 0.15);
+            color: #fca5a5;
+        }
+
+        .quiz-feedback {
+            font-size: 0.82rem;
+            font-family: 'Newsreader', serif;
+            font-style: italic;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            display: none;
+        }
+
+        .quiz-feedback.active {
+            display: block;
+        }
+
+        .quiz-feedback.success {
+            background: rgba(34, 197, 94, 0.1);
+            color: #86efac;
+            border-left: 3px solid #22c55e;
+        }
+
+        .quiz-feedback.error {
+            background: rgba(230, 57, 70, 0.1);
+            color: #fca5a5;
+            border-left: 3px solid var(--accent-crimson);
+        }
+
+        /* SOLUCIONARIO Y CONTROLES DEL JUEGO */
+        .game-controls-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .game-action-btn {
+            background: var(--accent-gold);
+            color: #000000;
+            border: none;
+            padding: 0.65rem 1.4rem;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+        }
+
+        .game-action-btn:hover {
+            background: #f3e5ab;
+            transform: translateY(-2px);
+        }
+
+        .game-action-btn.secondary {
+            background: transparent;
+            color: var(--accent-gold);
+            border: 1px solid var(--accent-gold);
+        }
+
+        .game-action-btn.secondary:hover {
+            background: rgba(212, 175, 55, 0.12);
+        }
+
+        .solution-box {
+            background: #080a0e;
+            border: 1px dashed var(--accent-gold);
+            border-radius: 8px;
+            padding: 1.2rem;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .solution-box.visible {
+            display: block;
+        }
+
+        .solution-title {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-gold);
+            font-size: 1rem;
+            margin-bottom: 0.6rem;
+            text-align: center;
+        }
+
+        .solution-content {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ELEMENTOS LÚDICOS DE REVISTA Y REGISTRO DETECTIVE (PDF Y WEB) */
+        .detective-log-box {
+            margin-top: 0.8rem;
+            background: rgba(20, 23, 31, 0.95);
+            border: 1px dashed var(--accent-gold);
+            border-radius: 8px;
+            padding: 0.8rem 1.1rem;
+        }
+
+        .detective-log-title {
+            font-family: 'Cinzel', serif;
+            font-size: 0.88rem;
+            color: var(--accent-gold);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .detective-slots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 0.5rem;
+            font-size: 0.84rem;
+        }
+
+        .detective-slot {
+            background: #141720;
+            border: 1px solid var(--border-color);
+            padding: 0.45rem 0.75rem;
+            border-radius: 6px;
+            color: #cbd5e1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+            transition: all 0.25s ease;
+        }
+
+        .detective-slot.completed {
+            border-color: #22c55e;
+            background: rgba(34, 197, 94, 0.1);
+        }
+
+        .detective-slot span {
+            color: var(--accent-gold-light);
+            font-weight: 600;
+        }
+
+        .slot-input {
+            width: 32px;
+            height: 24px;
+            background: #090b10;
+            border: 1px solid var(--accent-gold);
+            border-radius: 4px;
+            color: var(--accent-gold-light);
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            text-align: center;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            outline: none;
+            display: inline-block;
+            vertical-align: middle;
+            transition: all 0.2s ease;
+        }
+
+        .slot-input:focus {
+            border-color: #ffffff;
+            box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+        }
+
+        /* CRIPTOGRAMAS DE ESCAPE (4 PALABRAS SECRETAS) */
+        .secret-escape-section {
+            margin-top: 0.5rem;
+        }
+
+        .secret-words-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+            margin-top: 0.6rem;
+        }
+
+        .secret-word-item {
+            background: #121520;
+            border: 1px solid var(--border-color);
+            border-left: 3px solid var(--accent-gold);
+            border-radius: 8px;
+            padding: 0.7rem 1rem;
+            transition: all 0.25s ease;
+        }
+
+        .secret-word-item.completed {
+            border-left-color: #22c55e;
+            background: rgba(34, 197, 94, 0.08);
+        }
+
+        .secret-word-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.25rem;
+        }
+
+        .secret-word-title {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            color: var(--accent-gold);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .word-status-badge {
+            font-size: 0.72rem;
+            padding: 2px 8px;
+            border-radius: 20px;
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold-light);
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
+        }
+
+        .secret-word-hint {
+            font-family: 'Newsreader', serif;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 0.5rem;
+            line-height: 1.35;
+        }
+
+        .secret-letters-row {
+            display: flex;
+            justify-content: flex-start;
+            gap: 0.35rem;
+            flex-wrap: wrap;
+        }
+
+        .letter-box {
+            width: 32px;
+            height: 36px;
+            border: 2px solid var(--accent-gold);
+            background: #0d1017;
+            color: var(--accent-gold-light);
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+            user-select: none;
+        }
+
+        .letter-box.letter-input {
+            border: 2px dashed var(--accent-gold);
+            background: rgba(212, 175, 55, 0.08);
+            color: #ffffff;
+            text-align: center;
+            outline: none;
+            text-transform: uppercase;
+            transition: all 0.2s ease;
+        }
+
+        .letter-box.letter-input:focus {
+            border-color: #ffffff;
+            background: rgba(212, 175, 55, 0.2);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+        }
+
+        .letter-box.letter-input.correct {
+            border-color: #22c55e;
+            color: #86efac;
+            background: rgba(34, 197, 94, 0.15);
+        }
+
+        @media (max-width: 900px) {
+            .power-showcase-layout, .media-grid, .connection-grid, .match-columns-container, .solution-content, .detective-slots-grid { grid-template-columns: 1fr; }
+        }
+
+        .rights-link-card:hover img {
+            transform: scale(1.05);
+        }
+
+        /* -------------------------------------------------------------
+           ESTILOS ARTÍCULO PRINCIPAL
+        ------------------------------------------------------------- */
+        .magazine-container {
+            max-width: 1200px;
+            width: 100%;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 3.5rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            margin-bottom: 2rem;
+            box-sizing: border-box;
+        }
+
+        /* -------------------------------------------------------------
+           FLUID & LUXURY MAGAZINE PRINT/PDF STYLING (SIN CORTES)
+        ------------------------------------------------------------- */
+        @page {
+            size: A4 portrait;
+            margin: 6mm 8mm;
+        }
+
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+
+            html, body {
+                background: #08090d !important;
+                color: #e2e8f0 !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                display: block !important;
+                font-family: 'Plus Jakarta Sans', sans-serif !important;
+            }
+
+            /* CADA SECCIÓN ES UNA PÁGINA A4 LIMPIA SIN RECORTES */
+            .cover-page, .rights-container, .power-page, .media-page, .game-page {
+                width: 100% !important;
+                max-width: none !important;
+                min-height: 278mm !important;
+                height: auto !important;
+                max-height: none !important;
+                overflow: visible !important;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: flex-start !important;
+                background: #0d1017 !important;
+                color: #e2e8f0 !important;
+                border: 1px solid rgba(212, 175, 55, 0.45) !important;
+                border-radius: 4px !important;
+                box-sizing: border-box !important;
+                box-shadow: inset 0 0 30px rgba(0,0,0,0.8) !important;
+                break-before: page !important;
+                page-break-before: always !important;
+                break-after: page !important;
+                page-break-after: always !important;
+                break-inside: avoid !important;
+                page-break-inside: avoid !important;
+                padding: 0.7cm 0.9cm !important;
+            }
+
+            .cover-page {
+                break-before: auto !important;
+                page-break-before: auto !important;
+                padding: 1cm !important;
+                justify-content: space-between !important;
+                background: #08090d !important;
+                border: 1px solid rgba(212, 175, 55, 0.5) !important;
+            }
+
+            .rights-container {
+                padding: 0.7cm 0.9cm !important;
+                background: #090b10 !important;
+            }
+
+            .power-page {
+                padding: 0.7cm 0.9cm !important;
+                background: #08090d !important;
+                align-items: center !important;
+            }
+
+            .media-page {
+                padding: 0.6cm 0.8cm !important;
+                background: #0d1017 !important;
+                gap: 0.35rem !important;
+            }
+
+            .game-page {
+                padding: 0.6cm 0.8cm !important;
+                background: #0d1017 !important;
+                gap: 0.35rem !important;
+            }
+
+            /* Portada vertical (3:4) completa */
+            .cover-artwork-hero {
+                width: fit-content !important;
+                max-width: 100% !important;
+                margin: 0 auto !important;
+                border: 1px solid rgba(212, 175, 55, 0.4) !important;
+                padding: 4px !important;
+                background: #11141c !important;
+            }
+            .cover-artwork-hero img {
+                height: 165mm !important;
+                width: auto !important;
+                max-width: 100% !important;
+                object-fit: contain !important;
+                display: block !important;
+            }
+            .cover-header { margin-bottom: 0 !important; }
+            .cover-title {
+                color: #d4af37 !important;
+                font-family: 'Cinzel', serif !important;
+            }
+            .cover-subtitle { color: #f3e5ab !important; }
+            .cover-tag {
+                background: rgba(212, 175, 55, 0.15) !important;
+                color: #f3e5ab !important;
+                border: 1px solid #d4af37 !important;
+            }
+            .cover-footer {
+                color: #cbd5e1 !important;
+                border-top: 1px solid rgba(212, 175, 55, 0.3) !important;
+            }
+
+            /* PÁGINA 2: Árbol de Derechos */
+            .rights-header { margin-bottom: 0 !important; }
+            .rights-main-title {
+                color: #d4af37 !important;
+                font-family: 'Cinzel', serif !important;
+            }
+            .rights-tree {
+                width: fit-content !important;
+                max-width: 100% !important;
+                margin: 0 auto !important;
+                border: 1px solid rgba(212, 175, 55, 0.35) !important;
+                box-shadow: none !important;
+                background: #0d1017 !important;
+            }
+            .rights-tree-img {
+                height: 228mm !important;
+                width: auto !important;
+                max-width: 100% !important;
+            }
+            .tree-node {
+                animation: none !important;
+                box-shadow: 0 0 0 2px #d4af37, 0 0 10px rgba(212, 175, 55, 0.5) !important;
+            }
+
+            /* PÁGINA 3: Collage de Poder */
+            .power-header-area { margin-bottom: 0 !important; }
+            .power-main-title {
+                color: #d4af37 !important;
+                font-family: 'Cinzel', serif !important;
+                font-size: 1.9rem !important;
+                margin-bottom: 2mm !important;
+            }
+            .power-main-title span { color: #ffffff !important; }
+            .power-artwork-container {
+                max-width: 100% !important;
+                width: auto !important;
+                border: 1px solid rgba(212, 175, 55, 0.45) !important;
+                background: #0d1017 !important;
+                box-shadow: 0 0 25px rgba(0,0,0,0.9) !important;
+                transform: none !important;
+                margin: 0 auto !important;
+                padding: 4px !important;
+            }
+            .power-artwork-img {
+                height: 202mm !important;
+                max-height: 202mm !important;
+                width: auto !important;
+                max-width: 100% !important;
+                object-fit: contain !important;
+                margin: 0 auto !important;
+                display: block !important;
+            }
+            .power-artwork-zoom-badge, .collage-modal, .controls {
+                display: none !important;
+            }
+
+            /* PÁGINA 4: Canción, Documental y Referencias */
+            .magazine-header { margin-bottom: 0 !important; }
+            .brand-title {
+                color: #d4af37 !important;
+                font-family: 'Cinzel', serif !important;
+            }
+            .issue-meta { color: #94a3b8 !important; }
+            .issue-meta span { color: #d4af37 !important; }
+            .article-hero { margin-bottom: 0.3rem !important; }
+            .article-main-title {
+                color: #d4af37 !important;
+                font-family: 'Cinzel', serif !important;
+                font-size: 1.6rem !important;
+            }
+            .article-main-title span { color: #ffffff !important; }
+            .category-tag {
+                background: rgba(212, 175, 55, 0.15) !important;
+                color: #f3e5ab !important;
+                border: 1px solid #d4af37 !important;
+            }
+            .subtitle { color: #cbd5e1 !important; font-size: 0.82rem !important; }
+
+            .media-grid {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr !important;
+                gap: 0.6rem !important;
+                margin: 0.2rem 0 !important;
+            }
+            .media-card {
+                padding: 0.6rem 0.8rem !important;
+                background: #141722 !important;
+                border: 1px solid rgba(212, 175, 55, 0.3) !important;
+                border-radius: 6px !important;
+            }
+            .media-card.song-card { border-top: 3px solid #d4af37 !important; }
+            .media-card.doc-card { border-top: 3px solid #e63946 !important; background: #19141e !important; }
+            .media-card h3 { color: #ffffff !important; font-size: 0.95rem !important; margin: 0.2rem 0 !important; }
+            .media-artist { color: #d4af37 !important; font-size: 0.78rem !important; margin-bottom: 0.25rem !important; }
+            .media-card p { color: #cbd5e1 !important; font-size: 0.75rem !important; line-height: 1.3 !important; }
+            .media-btn {
+                background: rgba(212, 175, 55, 0.12) !important;
+                color: #f3e5ab !important;
+                border: 1px solid #d4af37 !important;
+                font-size: 0.7rem !important;
+                padding: 0.25rem 0.5rem !important;
+            }
+
+            .doc-guide-box {
+                background: #11141e !important;
+                border: 1px solid #d4af37 !important;
+                padding: 0.4rem 0.6rem !important;
+                margin: 0.25rem 0 !important;
+                border-radius: 6px !important;
+            }
+            .doc-guide-title { color: #d4af37 !important; font-size: 0.82rem !important; }
+            .doc-badge-pill {
+                background: rgba(212, 175, 55, 0.2) !important;
+                color: #f3e5ab !important;
+                border: 1px solid #d4af37 !important;
+                font-size: 0.68rem !important;
+            }
+            .doc-timeline-grid {
+                display: grid !important;
+                grid-template-columns: repeat(5, 1fr) !important;
+                gap: 0.3rem !important;
+                margin-top: 0.25rem !important;
+            }
+            .doc-timestamp-card {
+                background: #171c28 !important;
+                border: 1px solid rgba(212, 175, 55, 0.25) !important;
+                padding: 0.3rem !important;
+                border-radius: 4px !important;
+            }
+            .timestamp-badge {
+                color: #f3e5ab !important;
+                background: rgba(212, 175, 55, 0.15) !important;
+                font-size: 0.62rem !important;
+                padding: 1px 3px !important;
+            }
+            .timestamp-title { color: #ffffff !important; font-size: 0.7rem !important; margin: 0.1rem 0 !important; }
+            .timestamp-desc { color: #94a3b8 !important; font-size: 0.65rem !important; line-height: 1.15 !important; }
+
+            /* REFERENCIAS EN 2 COLUMNAS PARA QUE NUNCA SE CORTEN */
+            .references-box {
+                background: #0f121a !important;
+                border: 1px solid rgba(212, 175, 55, 0.35) !important;
+                padding: 0.45rem 0.7rem !important;
+                margin: 0 !important;
+                border-radius: 6px !important;
+            }
+            .references-title {
+                color: #d4af37 !important;
+                font-size: 0.82rem !important;
+                margin-bottom: 0.25rem !important;
+                padding-bottom: 0.1rem !important;
+                border-bottom: 1px solid rgba(212, 175, 55, 0.25) !important;
+            }
+            .references-list {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr !important;
+                gap: 0.15rem 0.6rem !important;
+            }
+            .references-list li {
+                color: #cbd5e1 !important;
+                font-size: 0.66rem !important;
+                line-height: 1.25 !important;
+                padding-left: 1rem !important;
+                text-indent: -1rem !important;
+            }
+            .references-list li strong { color: #f3e5ab !important; }
+            .references-list li small {
+                color: #94a3b8 !important;
+                font-size: 0.58rem !important;
+                margin-top: 0 !important;
+            }
+
+            /* PÁGINAS 5, 6 Y 7: TALLER LÚDICO EDITORIAL */
+            .game-badge-header {
+                background: #141722 !important;
+                border: 1px solid rgba(212, 175, 55, 0.35) !important;
+                padding: 0.3rem 0.6rem !important;
+            }
+            .game-status-tracker { color: #cbd5e1 !important; font-size: 0.78rem !important; }
+            .game-status-tracker strong { color: #d4af37 !important; }
+            .score-pill {
+                background: rgba(212, 175, 55, 0.15) !important;
+                color: #f3e5ab !important;
+                border: 1px solid #d4af37 !important;
+                font-size: 0.72rem !important;
+            }
+            .game-instructions-box {
+                background: #11141e !important;
+                border: 1px solid rgba(212, 175, 55, 0.25) !important;
+                color: #cbd5e1 !important;
+                font-size: 0.72rem !important;
+                padding: 0.3rem 0.6rem !important;
+            }
+            .game-instructions-box strong { color: #d4af37 !important; }
+
+            .match-columns-container {
+                display: grid !important;
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 0.45rem !important;
+                margin: 0.25rem 0 !important;
+            }
+            .match-column {
+                background: #121520 !important;
+                border: 1px solid rgba(212, 175, 55, 0.3) !important;
+                padding: 0.4rem !important;
+                border-radius: 6px !important;
+            }
+            .match-column-title {
+                background: #1a1f2e !important;
+                color: #d4af37 !important;
+                font-size: 0.72rem !important;
+                padding: 0.25rem 0.4rem !important;
+                margin-bottom: 0.3rem !important;
+            }
+            .game-node-btn {
+                background: #161a26 !important;
+                border: 1px solid rgba(255, 255, 255, 0.1) !important;
+                color: #e2e8f0 !important;
+                padding: 0.35rem 0.5rem !important;
+                margin-bottom: 0.25rem !important;
+                box-shadow: none !important;
+            }
+            .node-print-code {
+                background: #23293a !important;
+                color: #f3e5ab !important;
+                border: 1px solid #d4af37 !important;
+                font-size: 0.72rem !important;
+            }
+            .node-tag { color: #ffffff !important; font-size: 0.76rem !important; }
+            .game-node-btn p { color: #cbd5e1 !important; font-size: 0.68rem !important; line-height: 1.15 !important; }
+
+            /* Casillero del Investigador */
+            .detective-log-box {
+                background: #11141e !important;
+                border: 1px dashed #d4af37 !important;
+                padding: 0.45rem 0.75rem !important;
+                margin-top: 0.3rem !important;
+                border-radius: 6px !important;
+            }
+            .detective-log-title {
+                color: #d4af37 !important;
+                font-size: 0.78rem !important;
+                margin-bottom: 0.3rem !important;
+            }
+            .detective-slots-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 0.3rem !important;
+            }
+            .detective-slot {
+                background: #171c28 !important;
+                border: 1px solid rgba(212, 175, 55, 0.3) !important;
+                padding: 0.3rem 0.5rem !important;
+                color: #cbd5e1 !important;
+                font-size: 0.72rem !important;
+            }
+            .detective-slot span { color: #f3e5ab !important; }
+            .slot-input {
+                background: #090b10 !important;
+                border: 1px solid #d4af37 !important;
+                color: #f3e5ab !important;
+            }
+
+            /* FASE 2: Decodificador */
+            .quiz-section { margin-top: 0 !important; }
+            .quiz-section-title {
+                color: #d4af37 !important;
+                font-size: 1.05rem !important;
+                margin-bottom: 0.2rem !important;
+            }
+            .quiz-card {
+                background: #131722 !important;
+                border: 1px solid rgba(255, 255, 255, 0.1) !important;
+                border-left: 3px solid #d4af37 !important;
+                padding: 0.55rem 0.85rem !important;
+                margin-bottom: 0.45rem !important;
+            }
+            .quiz-question-text {
+                color: #ffffff !important;
+                font-size: 0.82rem !important;
+                margin-bottom: 0.3rem !important;
+            }
+            .quiz-options-list { gap: 0.25rem !important; }
+            .quiz-option-label {
+                background: #171c28 !important;
+                border: 1px solid rgba(255, 255, 255, 0.08) !important;
+                color: #cbd5e1 !important;
+                font-size: 0.75rem !important;
+                padding: 0.35rem 0.55rem !important;
+            }
+            .quiz-option-label input[type="radio"] {
+                display: inline-block !important;
+                width: 13px !important;
+                height: 13px !important;
+                border: 2px solid #d4af37 !important;
+                border-radius: 50% !important;
+                background: transparent !important;
+                flex-shrink: 0 !important;
+            }
+
+            /* FASE 3: Criptogramas de Escape (4 Palabras Secretas) */
+            .secret-words-grid {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 0.45rem !important;
+                margin-top: 0.3rem !important;
+            }
+            .secret-word-item {
+                background: #121520 !important;
+                border: 1px solid rgba(212, 175, 55, 0.3) !important;
+                border-left: 3px solid #d4af37 !important;
+                padding: 0.4rem 0.7rem !important;
+            }
+            .secret-word-title {
+                color: #d4af37 !important;
+                font-size: 0.8rem !important;
+            }
+            .word-status-badge {
+                font-size: 0.65rem !important;
+                padding: 1px 6px !important;
+            }
+            .secret-word-hint {
+                color: #94a3b8 !important;
+                font-size: 0.72rem !important;
+                margin-bottom: 0.3rem !important;
+            }
+            .letter-box {
+                width: 26px !important;
+                height: 30px !important;
+                border: 1.5px solid #d4af37 !important;
+                background: #171c28 !important;
+                color: #f3e5ab !important;
+                font-size: 0.92rem !important;
+            }
+            .letter-box.letter-input {
+                border: 1.5px dashed #d4af37 !important;
+                background: #090b10 !important;
+            }
+
+            /* Solucionario Invertido 180° en Impresión */
+            .game-controls-bar { display: none !important; }
+            .solution-box {
+                display: block !important;
+                background: #090b10 !important;
+                border: 1.5px dashed #d4af37 !important;
+                padding: 0.45rem 0.75rem !important;
+                margin-top: 0.4rem !important;
+                transform: rotate(180deg) !important;
+                transform-origin: center center !important;
+            }
+            .solution-title {
+                color: #d4af37 !important;
+                font-size: 0.75rem !important;
+                margin-bottom: 0.2rem !important;
+            }
+            .solution-title::after {
+                content: " — (GIRA LA REVISTA 180° PARA COMPROBAR)";
+                color: #f3e5ab;
+                font-size: 0.68rem;
+            }
+            .solution-content {
+                font-size: 0.68rem !important;
+                gap: 0.6rem !important;
+                color: #cbd5e1 !important;
+            }
+            .solution-content ul { margin-top: 0.1rem !important; }
+            .solution-content li { margin-bottom: 0.1rem !important; }
+            .solution-content strong { color: #f3e5ab !important; }
+            .solution-content code {
+                background: #181c28 !important;
+                color: #86efac !important;
+                border: 1px solid rgba(34, 197, 94, 0.4) !important;
+                padding: 1px 3px !important;
+                font-size: 0.68rem !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="controls">
+        <button class="btn-control" onclick="window.print()">🖨️ Imprimir Revista Completa (PDF)</button>
+    </div>
+
+    <!-- =========================================================
+         PÁGINA 1: PORTADA OFICIAL (COVER PAGE - LIMPIA)
+    ========================================================= -->
+    <section class="cover-page">
+        <header class="cover-header">
+            <span class="cover-tag">REVISTA DE FILOSOFÍA</span>
+            <h1 class="cover-title">LUMEN</h1>
+            <p class="cover-subtitle">"La Luz de la Verdad"</p>
+        </header>
+
+        <div class="cover-artwork-hero">
+            <img src="revista_portada.jpg" alt="Portada Oficial de la Revista LUMEN">
+        </div>
+
+        <footer class="cover-footer">
+            <div>EDICIÓN Nº 01 | FILOSOFÍA</div>
+            <div>AUTORES: <strong>Miguel Moreno, Jaider Valencia, Johana Guadasmo y Karen Lara</strong></div>
+        </footer>
+    </section>
+
+    <!-- =========================================================
+         PÁGINA 2: SECCIÓN DE DERECHOS (SOLO IMÁGENES CON HIPERVÍNCULOS)
+    ========================================================= -->
+    <section class="rights-container">
+        <header class="rights-header">
+            <h2 class="rights-main-title">NUESTROS DERECHOS</h2>
+        </header>
+
+        <!-- Árbol de derechos: cada círculo es un hipervínculo a su sección -->
+        <div class="rights-tree">
+            <img src="derechos_humanos.jpg" alt="Árbol de los Derechos Humanos" class="rights-tree-img">
+            <a href="https://canva.link/fqvf1w04blkn6w7" target="_blank" rel="noopener noreferrer" class="tree-node node-1ra" style="left: 63.62%; top: 19%;" title="Derechos de 1ra Generación" aria-label="Derechos de 1ra Generación">
+                <img src="derechos_1ra_gen.jpg" alt="Derechos de 1ra Generación">
+            </a>
+            <a href="https://www.youtube.com/results?search_query=derechos+de+segunda+generacion+santiago+quintero+" target="_blank" rel="noopener noreferrer" class="tree-node node-2da" style="left: 42.63%; top: 11.83%;" title="Derechos de 2da Generación" aria-label="Derechos de 2da Generación">
+                <img src="derechos_2da_gen.jpg" alt="Derechos de 2da Generación">
+            </a>
+            <a href="https://drive.google.com/file/d/1Jx-mGvMJaF_BeKitmlZw0QRGCIcsTkv0/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="tree-node node-3ra" style="left: 21.43%; top: 19%;" title="Derechos de 3ra Generación" aria-label="Derechos de 3ra Generación">
+                <img src="derechos_3ra_gen.jpg" alt="Derechos de 3ra Generación">
+            </a>
+            <a href="https://miguelmoreno123456789m-lab.github.io/Derechos_Ninos/" target="_blank" rel="noopener noreferrer" class="tree-node node-ninos" style="left: 14.73%; top: 49.83%;" title="Derechos de los Niños" aria-label="Derechos de los Niños">
+                <img src="derechos_ninos.jpg" alt="Derechos de los Niños">
+            </a>
+            <a href="https://huellitas-cerbero.vercel.app" target="_blank" rel="noopener noreferrer" class="tree-node node-anim" style="left: 70.76%; top: 50.5%;" title="Derechos de los Animales" aria-label="Derechos de los Animales">
+                <img src="derechos_animales.jpg" alt="Derechos de los Animales">
+            </a>
+        </div>
+    </section>
+
+    <!-- =========================================================
+         PÁGINA 3: ¿CÓMO EJERCEN PODER SOBRE NOSOTROS?
+    ========================================================= -->
+    <main class="magazine-container power-page" id="pagina-poder">
+        <header class="magazine-header" style="width: 100%;">
+            <div class="brand-title">LUMEN // FILOSOFÍA</div>
+            <div class="issue-meta">
+                Edición Especial: <span>Filosofía del Poder</span>
+            </div>
+        </header>
+
+        <div class="power-header-area">
+            <h2 class="power-main-title">¿CÓMO EJERCEN PODER <span>SOBRE NOSOTROS?</span></h2>
+        </div>
+
+        <div class="power-artwork-container" onclick="openCollageModal()" title="Clic para ampliar en alta resolución">
+            <img src="revista_collage_poder_hd.jpg" alt="¿Cómo ejercen poder sobre nosotros?" id="collagePoderImg" class="power-artwork-img">
+            <div class="power-artwork-zoom-badge">🔍 Clic para ampliar</div>
+        </div>
+    </main>
+
+    <!-- =========================================================
+         PÁGINA 4: BANDA SONORA Y MIRADA (CANCIÓN + DOCUMENTAL RTVC PLAY)
+    ========================================================= -->
+    <section class="magazine-container media-page">
+        <header class="magazine-header">
+            <div class="brand-title">LUMEN // FILOSOFÍA</div>
+            <div class="issue-meta">
+                Sección: <span>Cultura y Resistencia</span><br>
+                Foucault en la música y el cine
+            </div>
+        </header>
+
+        <div class="article-hero compact-hero">
+            <span class="category-tag">Banda sonora &amp; Mirada</span>
+            <h2 class="article-main-title">EL PODER <span>SUENA Y SE VE</span></h2>
+            <p class="subtitle">Una canción y un documental que ponen en escena la disciplina, el encierro y la resistencia.</p>
+        </div>
+
+        <div class="media-grid">
+            <article class="media-card song-card">
+                <div class="media-icon">🎵</div>
+                <span class="media-tag">La canción</span>
+                <h3>“El baile de los que sobran”</h3>
+                <p class="media-artist">Los Prisioneros · 1986</p>
+                <p>Nos prometen que estudiar y trabajar nos hará iguales, pero el sistema deja afuera a los que “sobran”: los marginados por la norma.</p>
+                <a class="media-btn" href="https://www.youtube.com/results?search_query=Los+Prisioneros+El+baile+de+los+que+sobran" target="_blank" rel="noopener noreferrer">▶ Escuchar la canción</a>
+            </article>
+
+            <article class="media-card doc-card">
+                <div class="media-icon">🎬</div>
+                <span class="media-tag">El documental · RTVC Play</span>
+                <h3>“Modelo Estéreo”</h3>
+                <p class="media-artist">Señal Colombia · Colectivo Mario Grande · 2018 (54 min)</p>
+                <p>Dentro de la Cárcel Modelo de Bogotá, el recluso “Garo” encuentra en el rap una vía de redención frente al encierro. <em>(Revisa abajo la ruta crítica de 18 min seleccionados para no tener que ver los 54 min completos).</em></p>
+                <a class="media-btn" href="https://rtvcplay.co/peliculas-documentales/modelo-estereo" target="_blank" rel="noopener noreferrer">▶ Ver en RTVC Play</a>
+            </article>
+        </div>
+
+        <!-- =========================================================
+             GUÍA ESENCIAL DE VISIONADO: RUTA DE MINUTOS CLAVE
+        ========================================================= -->
+        <!-- GUÍA DE VISIONADO RÁPIDA -->
+        <div class="doc-guide-box">
+            <div class="doc-guide-header">
+                <div class="doc-guide-title">
+                    ⏱️ MINUTOS CLAVE: "MODELO ESTÉREO"
+                </div>
+                <span class="doc-badge-pill">Ruta Rápida (18 min)</span>
+            </div>
+            <div class="doc-timeline-grid">
+                <div class="doc-timestamp-card">
+                    <div class="timestamp-badge">📍 00:00 – 06:30</div>
+                    <div class="timestamp-title">El Panóptico</div>
+                    <div class="timestamp-desc">Muros, rejas y pasillos hechos para vigilar sin descanso.</div>
+                </div>
+
+                <div class="doc-timestamp-card">
+                    <div class="timestamp-badge">📍 12:15 – 17:40</div>
+                    <div class="timestamp-title">¡Mario Grande!</div>
+                    <div class="timestamp-desc">Alerta de requisa: el miedo y la tensión del ojo que acecha.</div>
+                </div>
+
+                <div class="doc-timestamp-card">
+                    <div class="timestamp-badge">📍 22:00 – 28:10</div>
+                    <div class="timestamp-title">Castigo y Dinero</div>
+                    <div class="timestamp-desc">Años de cárcel por un celular vs. impunidad para los ricos.</div>
+                </div>
+
+                <div class="doc-timestamp-card">
+                    <div class="timestamp-badge">📍 33:20 – 41:00</div>
+                    <div class="timestamp-title">El Rap en la Capilla</div>
+                    <div class="timestamp-desc">La música como escape y libertad interior frente al encierro.</div>
+                </div>
+
+                <div class="doc-timestamp-card">
+                    <div class="timestamp-badge">📍 46:30 – 53:30</div>
+                    <div class="timestamp-title">La Red Invisible</div>
+                    <div class="timestamp-desc">Salir de prisión y chocar con el estigma y la exclusión social.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- =========================================================
+             SECCIÓN DE REFERENCIAS BIBLIOGRÁFICAS (FUENTES CONSULTADAS)
+        ========================================================= -->
+        <section class="references-box">
+            <h3 class="references-title">📚 REFERENCIAS BIBLIOGRÁFICAS (FUENTES ACADÉMICAS)</h3>
+            <ul class="references-list">
+                <li>
+                    <strong>Platón.</strong> (1992). <em>República</em> (Libro VII, 514a–517a; Traducción de C. Eggers Lan). Madrid: Editorial Gredos.
+                    <small>• Fuente primaria: Alegoría de la caverna, dualismo ontológico/epistemológico, metáforas de las cadenas y el sol.</small>
+                </li>
+                <li>
+                    <strong>Foucault, Michel.</strong> (2002). <em>Vigilar y Castigar: Nacimiento de la prisión</em> (Capítulo III: "El Panoptismo", pp. 184–209; Trad. A. Garzón del Camino). Buenos Aires: Siglo XXI Editores.
+                    <small>• Fuente primaria: Microfísica del poder, modelo disciplinario de la peste, el Panóptico de Bentham y la autovigilancia.</small>
+                </li>
+                <li>
+                    <strong>Foucault, Michel.</strong> (1977). <em>Historia de la sexualidad, Vol. 1: La voluntad de saber</em> (Trad. U. Guiñazú). Ciudad de México: Siglo XXI Editores.
+                    <small>• Fuente de la idea “donde hay poder, hay resistencia”, usada para conectar la canción y el documental.</small>
+                </li>
+                <li>
+                    <strong>Asamblea General de las Naciones Unidas.</strong> (1948). <em>Declaración Universal de los Derechos Humanos</em> (Resolución 217 A III). París.
+                    <small>• Marco fundamental sobre los derechos inalienables a la libertad, la educación, la salud, la justicia y la libre expresión.</small>
+                </li>
+                <li>
+                    <strong>Bentham, Jeremy.</strong> (1995). <em>El Panóptico</em>. Madrid: Las Ediciones de La Piqueta.
+                    <small>• Modelo arquitectónico y principio óptico de la visibilidad constante e inverificable utilizado por Foucault.</small>
+                </li>
+                <li>
+                    <strong>Colectivo Mario Grande.</strong> (2018). <em>Modelo Estéreo</em> [Cortometraje documental]. Señal Colombia / RTVC Play.
+                    <small>• Documental sobre la vida y la música dentro de la Cárcel Nacional Modelo de Bogotá.</small>
+                </li>
+                <li>
+                    <strong>Los Prisioneros.</strong> (1986). <em>El baile de los que sobran</em>. En <em>Pateando Piedras</em>. EMI Odeón.
+                    <small>• Canción sobre la exclusión social de quienes no encajan en la norma del sistema.</small>
+                </li>
+            </ul>
+        </section>
+    </section>
+
+    <!-- =========================================================
+         PÁGINA 5: TALLER CRÍTICO — FASE 1: CONEXIÓN DE HILOS
+         (INTERACTIVO EN WEB + CASILLERO IMPRESO EN PDF)
+    ========================================================= -->
+    <section class="magazine-container game-page game-page-1" id="seccion-taller-juego">
+        <header class="magazine-header" style="width: 100%;">
+            <div class="brand-title">LUMEN // TALLER CRÍTICO</div>
+            <div class="issue-meta">
+                Evaluación Lúdica: <span>Hilos del Poder</span><br>
+                Decodificación del Collage &amp; Obras
+            </div>
+        </header>
+
+        <div class="article-hero compact-hero" style="margin-bottom: 0.5rem;">
+            <span class="category-tag">Taller &amp; Desafío Filosófico</span>
+            <h2 class="article-main-title">LOS HILOS <span>DEL PODER</span></h2>
+            <p class="subtitle">¿Comprendiste el significado del collage, la canción y el documental? Pon a prueba tu agudeza crítica.</p>
+        </div>
+
+        <div class="game-badge-header">
+            <div class="game-status-tracker">
+                <div>🎯 <strong>Tríadas Conectadas:</strong> <span id="gameMatchesCount">0</span> / 4</div>
+                <div>⭐ <strong>Puntaje Total:</strong> <span id="gameScoreVal">0</span> / 100 pts</div>
+            </div>
+            <div class="score-pill" id="gameRankBadge">🌱 Nivel: Observador del Panóptico</div>
+        </div>
+
+        <div class="game-instructions-box">
+            <span>ℹ️</span>
+            <div>
+                <strong>Modo Digital:</strong> Haz clic en un símbolo del Collage, luego en su escena y en su Concepto de Foucault para unir la tríada.<br>
+                <strong>Modo Revista / PDF:</strong> Traza con lápiz las líneas uniendo las 3 columnas y anota los códigos en el Casillero del Investigador.
+            </div>
+        </div>
+
+        <!-- FASE 1: TABLERO DE HILOS -->
+        <div class="phase-1-wrapper">
+            <h3 style="font-family: 'Cinzel', serif; color: var(--accent-gold); font-size: 1.05rem; margin-bottom: 0.5rem; text-align: center;">
+                FASE 1: CONEXIÓN DE HILOS (COLLAGE ↔ CANCIÓN/DOC ↔ FOUCAULT)
+            </h3>
+            
+            <div class="match-columns-container">
+                <!-- COLUMNA 1: COLLAGE -->
+                <div class="match-column" id="colCollage">
+                    <div class="match-column-title">🧩 SÍMBOLO DEL COLLAGE</div>
+                    
+                    <div class="game-node-btn" data-col="c" data-id="disciplina" onclick="selectGameNode('c', 'disciplina')">
+                        <span class="node-print-code">[ 1 ]</span>
+                        <div class="node-tag">🏫 Pupitres y marionetas</div>
+                        <p>Aulas en fila y figuras manejadas como títeres para obedecer y consumir.</p>
+                    </div>
+
+                    <div class="game-node-btn" data-col="c" data-id="resistencia" onclick="selectGameNode('c', 'resistencia')">
+                        <span class="node-print-code">[ 2 ]</span>
+                        <div class="node-tag">📢 Megáfono y puño en alto</div>
+                        <p>Grito rebelde que rompe cadenas para hacerse oír desde abajo.</p>
+                    </div>
+
+                    <div class="game-node-btn" data-col="c" data-id="panoptico" onclick="selectGameNode('c', 'panoptico')">
+                        <span class="node-print-code">[ 3 ]</span>
+                        <div class="node-tag">👁️ Ojo central y cámaras</div>
+                        <p>Mirada fija y pantallas que vigilan cada movimiento a toda hora.</p>
+                    </div>
+
+                    <div class="game-node-btn" data-col="c" data-id="castigo" onclick="selectGameNode('c', 'castigo')">
+                        <span class="node-print-code">[ 4 ]</span>
+                        <div class="node-tag">⏳ Billetes y reloj</div>
+                        <p>El tiempo vuelto dinero y la amenaza constante de castigo legal.</p>
+                    </div>
+                </div>
+
+                <!-- COLUMNA 2: MEDIOS (CANCIÓN / DOCUMENTAL) -->
+                <div class="match-column" id="colMedia">
+                    <div class="match-column-title">🎬 CANCIÓN Y DOCUMENTAL</div>
+
+                    <div class="game-node-btn" data-col="m" data-id="castigo" onclick="selectGameNode('m', 'castigo')">
+                        <span class="node-print-code">[ A ]</span>
+                        <div class="node-tag">⚖️ Condena por un celular</div>
+                        <p>Años de cárcel por un robo menor, mientras los ricos compran su libertad.</p>
+                    </div>
+
+                    <div class="game-node-btn" data-col="m" data-id="panoptico" onclick="selectGameNode('m', 'panoptico')">
+                        <span class="node-print-code">[ B ]</span>
+                        <div class="node-tag">🚨 Alerta de ¡Mario Grande!</div>
+                        <p>Presos avisándose para esconderse del ojo del guardia que acecha.</p>
+                    </div>
+
+                    <div class="game-node-btn" data-col="m" data-id="resistencia" onclick="selectGameNode('m', 'resistencia')">
+                        <span class="node-print-code">[ C ]</span>
+                        <div class="node-tag">🎤 Rap y música de protesta</div>
+                        <p>Rimas que liberan la mente dentro del patio y denuncian la exclusión.</p>
+                    </div>
+
+                    <div class="game-node-btn" data-col="m" data-id="disciplina" onclick="selectGameNode('m', 'disciplina')">
+                        <span class="node-print-code">[ D ]</span>
+                        <div class="node-tag">🎓 Jueguen a estudiar</div>
+                        <p>La promesa de superación que deja a los jóvenes pateando piedras.</p>
+                    </div>
+                </div>
+
+                <!-- COLUMNA 3: FOUCAULT -->
+                <div class="match-column" id="colFoucault">
+                    <div class="match-column-title">📖 CONCEPTO DE FOUCAULT</div>
+
+                    <div class="game-node-btn" data-col="f" data-id="resistencia" onclick="selectGameNode('f', 'resistencia')">
+                        <span class="node-print-code">[ I ]</span>
+                        <div class="node-tag">🔥 La Resistencia</div>
+                        <p>Donde hay control, siempre surge una fuerza para rebelarse y crear arte.</p>
+                    </div>
+
+                    <div class="game-node-btn" data-col="f" data-id="panoptico" onclick="selectGameNode('f', 'panoptico')">
+                        <span class="node-print-code">[ II ]</span>
+                        <div class="node-tag">🏛️ El Panóptico</div>
+                        <p>El control invisible donde cada persona termina vigilándose a sí misma.</p>
+                    </div>
+
+                    <div class="game-node-btn" data-col="f" data-id="disciplina" onclick="selectGameNode('f', 'disciplina')">
+                        <span class="node-print-code">[ III ]</span>
+                        <div class="node-tag">📐 Cuerpos dóciles</div>
+                        <p>Escuelas y fábricas con horarios y filas para formar gente obediente.</p>
+                    </div>
+
+                    <div class="game-node-btn" data-col="f" data-id="castigo" onclick="selectGameNode('f', 'castigo')">
+                        <span class="node-print-code">[ IV ]</span>
+                        <div class="node-tag">💰 Castigo desigual</div>
+                        <p>Leyes que caen con fuerza sobre el pobre y perdonan al poderoso.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="gameMatchFeedback" style="text-align: center; margin-top: 0.4rem; font-size: 0.88rem; min-height: 22px; font-weight: 600;"></div>
+        </div>
+
+        <!-- CASILLERO DEL INVESTIGADOR // ANOTA TUS TRÍADAS (PDF & WEB) -->
+        <div class="detective-log-box">
+            <div class="detective-log-title">🕵️ CASILLERO DEL INVESTIGADOR // REGISTRO DE TRÍADAS</div>
+            <div class="detective-slots-grid">
+                <div class="detective-slot" id="slotDisciplina">
+                    <span>Tríada 1 (Disciplina):</span>
+                    <div>Símbolo [ 1 ] ➔ Obra [ <input type="text" class="slot-input" maxlength="1" id="slotIn1" placeholder=" " oninput="manualCheckSlot('disciplina')"> ] ➔ Foucault [ <input type="text" class="slot-input" maxlength="3" id="slotInF1" placeholder=" " oninput="manualCheckSlot('disciplina')"> ]</div>
+                </div>
+                <div class="detective-slot" id="slotResistencia">
+                    <span>Tríada 2 (Resistencia):</span>
+                    <div>Símbolo [ 2 ] ➔ Obra [ <input type="text" class="slot-input" maxlength="1" id="slotIn2" placeholder=" " oninput="manualCheckSlot('resistencia')"> ] ➔ Foucault [ <input type="text" class="slot-input" maxlength="3" id="slotInF2" placeholder=" " oninput="manualCheckSlot('resistencia')"> ]</div>
+                </div>
+                <div class="detective-slot" id="slotPanoptico">
+                    <span>Tríada 3 (Panóptico):</span>
+                    <div>Símbolo [ 3 ] ➔ Obra [ <input type="text" class="slot-input" maxlength="1" id="slotIn3" placeholder=" " oninput="manualCheckSlot('panoptico')"> ] ➔ Foucault [ <input type="text" class="slot-input" maxlength="3" id="slotInF3" placeholder=" " oninput="manualCheckSlot('panoptico')"> ]</div>
+                </div>
+                <div class="detective-slot" id="slotCastigo">
+                    <span>Tríada 4 (Castigo):</span>
+                    <div>Símbolo [ 4 ] ➔ Obra [ <input type="text" class="slot-input" maxlength="1" id="slotIn4" placeholder=" " oninput="manualCheckSlot('castigo')"> ] ➔ Foucault [ <input type="text" class="slot-input" maxlength="3" id="slotInF4" placeholder=" " oninput="manualCheckSlot('castigo')"> ]</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================================
+         PÁGINA 6: TALLER CRÍTICO — FASE 2: DECODIFICADOR DEL COLLAGE
+         (EVALUACIÓN CONCEPTUAL Y COMPRENSIÓN VISUAL)
+    ========================================================= -->
+    <section class="magazine-container game-page game-page-2" id="seccion-decodificador">
+        <header class="magazine-header" style="width: 100%;">
+            <div class="brand-title">LUMEN // TALLER CRÍTICO</div>
+            <div class="issue-meta">
+                Evaluación Lúdica: <span>Fase 2: Decodificador</span><br>
+                Comprensión Crítica del Collage
+            </div>
+        </header>
+
+        <!-- FASE 2: DECODIFICADOR DEL COLLAGE -->
+        <div class="quiz-section">
+            <h3 class="quiz-section-title">FASE 2: DECODIFICADOR DEL COLLAGE</h3>
+            <p style="text-align: center; font-size: 0.88rem; color: var(--text-muted); margin-top: -0.3rem; margin-bottom: 0.8rem;">
+                Marca con lápiz en PDF o haz clic para comprobar si el mensaje visual sobre el poder fue claro y conciso:
+            </p>
+
+            <!-- PREGUNTA 1 -->
+            <div class="quiz-card" id="qCard1">
+                <div class="quiz-question-text">
+                    <span>1.</span> ¿Por qué en el centro del collage hay un ojo rasgado rodeado de cámaras y celulares?
+                </div>
+                <div class="quiz-options-list">
+                    <label class="quiz-option-label" onclick="checkQuizAnswer(1, 'A', false)">
+                        <input type="radio" name="q1" value="A"> 
+                        <span>[ A ] Es solo un adorno estético del cartel sin relación con el tema.</span>
+                    </label>
+                    <label class="quiz-option-label" onclick="checkQuizAnswer(1, 'B', true)">
+                        <input type="radio" name="q1" value="B"> 
+                        <span>[ B ] Muestra que hoy la vigilancia no solo viene de guardias, sino de los celulares donde nosotros mismos nos vigilamos.</span>
+                    </label>
+                    <label class="quiz-option-label" onclick="checkQuizAnswer(1, 'C', false)">
+                        <input type="radio" name="q1" value="C"> 
+                        <span>[ C ] Señala que las redes sociales eliminaron todo tipo de control.</span>
+                    </label>
+                </div>
+                <div class="quiz-feedback" id="qFeed1"></div>
+            </div>
+
+            <!-- PREGUNTA 2 -->
+            <div class="quiz-card" id="qCard2">
+                <div class="quiz-question-text">
+                    <span>2.</span> ¿Qué comunica la unión de pupitres de colegio, oficinas y marionetas?
+                </div>
+                <div class="quiz-options-list">
+                    <label class="quiz-option-label" onclick="checkQuizAnswer(2, 'A', false)">
+                        <input type="radio" name="q2" value="A"> 
+                        <span>[ A ] Que la educación asegura la riqueza inmediata de todos los graduados.</span>
+                    </label>
+                    <label class="quiz-option-label" onclick="checkQuizAnswer(2, 'B', true)">
+                        <input type="radio" name="q2" value="B"> 
+                        <span>[ B ] Que la escuela y el trabajo entrenan a las personas para obedecer y encajar dócilmente en el sistema.</span>
+                    </label>
+                    <label class="quiz-option-label" onclick="checkQuizAnswer(2, 'C', false)">
+                        <input type="radio" name="q2" value="C"> 
+                        <span>[ C ] Que los colegios deberían cerrar de manera definitiva.</span>
+                    </label>
+                </div>
+                <div class="quiz-feedback" id="qFeed2"></div>
+            </div>
+
+            <!-- PREGUNTA 3 -->
+            <div class="quiz-card" id="qCard3">
+                <div class="quiz-question-text">
+                    <span>3.</span> ¿Por qué el megáfono y el puño con cadenas rotas están abajo y no arriba con el poder?
+                </div>
+                <div class="quiz-options-list">
+                    <label class="quiz-option-label" onclick="checkQuizAnswer(3, 'A', true)">
+                        <input type="radio" name="q3" value="A"> 
+                        <span>[ A ] Porque la resistencia no nace de los que mandan, sino de los excluidos que alzan la voz con el arte.</span>
+                    </label>
+                    <label class="quiz-option-label" onclick="checkQuizAnswer(3, 'B', false)">
+                        <input type="radio" name="q3" value="B"> 
+                        <span>[ B ] Porque no había espacio arriba al pegar las imágenes del collage.</span>
+                    </label>
+                    <label class="quiz-option-label" onclick="checkQuizAnswer(3, 'C', false)">
+                        <input type="radio" name="q3" value="C"> 
+                        <span>[ C ] Para indicar que la resistencia está derrotada sin salida.</span>
+                    </label>
+                </div>
+                <div class="quiz-feedback" id="qFeed3"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================================
+         PÁGINA 7: TALLER CRÍTICO — FASE 3: DESAFÍO DE ESCAPE (4 PALABRAS)
+         & SOLUCIONARIO INVERTIDO 180° (TIPO REVISTA DE PASATIEMPOS)
+    ========================================================= -->
+    <section class="magazine-container game-page game-page-3" id="seccion-criptogramas">
+        <header class="magazine-header" style="width: 100%;">
+            <div class="brand-title">LUMEN // TALLER CRÍTICO</div>
+            <div class="issue-meta">
+                Evaluación Lúdica: <span>Fase 3: Escape Filosófico</span><br>
+                Criptograma de 4 Palabras Clave
+            </div>
+        </header>
+
+        <div class="article-hero compact-hero" style="margin-bottom: 0.4rem;">
+            <span class="category-tag">Desafío de Escape</span>
+            <h2 class="article-main-title" style="font-size: 1.45rem;">EL CRIPTOGRAMA <span>DE LAS 4 PALABRAS</span></h2>
+            <p class="subtitle">Descifra los 4 conceptos que desmantelan la máquina de poder. Llena las casillas vacías con lápiz en PDF o tipeando en la web:</p>
+        </div>
+
+        <!-- CONTENEDOR DE LAS 4 PALABRAS SECRETAS -->
+        <div class="secret-words-grid">
+            
+            <!-- PALABRA 1: RESISTENCIA -->
+            <div class="secret-word-item" data-word-key="word1">
+                <div class="secret-word-header">
+                    <span class="secret-word-title">1. LA FUERZA ANTAGÓNICA (11 letras)</span>
+                    <span class="word-status-badge">⏳ PENDIENTE</span>
+                </div>
+                <p class="secret-word-hint">"Donde hay poder, siempre habrá una fuerza contraria dispuesta a desafiarlo..." El contrapoder activo y disidente que fisura las estructuras de control.</p>
+                <div class="secret-letters-row">
+                    <div class="letter-box">R</div>
+                    <input type="text" class="letter-box letter-input" maxlength="1" data-correct="E" oninput="checkMultiSecretWord(this)" onkeydown="handleSecretKeydown(event, this)" placeholder="_">
+                    <input type="text" class="letter-box letter-input" maxlength="1" data-correct="S" oninput="checkMultiSecretWord(this)" onkeydown="handleSecretKeydown(event, this)" placeholder="_">
+                    <input type="text" class="letter-box letter-input" maxlength="1" data-correct="I" oninput="checkMultiSecretWord(this)" onkeydown="handleSecretKeydown(event, this)" placeholder="_">
+                    <input type="text" class="letter-box letter-input" maxlength="1" data-correct="S" oninput="checkMultiSecretWord(this)" onkeydown="handleSecretKeydown(event, this)" placeholder="_">
+                    <div class="letter-box">T</div>
+                    <input type="text" class="letter-box letter-input" maxlength="1" data-correct="E" oninput="checkMultiSecretWord(this)" onkeydown="handleSecretKeydown(event, this)" placeholder="_">
+                    <input type="text" class="letter-box letter-input" maxlength="1" data-correct="N" oninput="checkMultiSecretWord(this)" onkeydown="handleSecretKeydown(event, this)" placeholder="_">
+                    <input type="text" class="letter-box letter-input" maxlength="1" data-correct="C" oninput="checkMultiSecretWord(this)" onkeydown="handleSecretKeydown(event, this)" placeholder="_">
+                    <input type="text" class="letter-box letter-input" maxlength="1" data-correct="I" oninput="checkMultiSecretWord(this)" onkeydown="handleSecretKeydown(event, this)" placeholder="_">
+                    <input type="text" class="letter-box letter-input" maxlength="1" data-correct="A" oninput="checkMultiSecretWord(this)" onkeydown="handleSecretKeydown(event, this)" placeholder="_">
+                </div>
+            </div>
+
+            <!-- PALABRA 2: PANOPTICO -->
+            <div class="secret-word-item" data-word-key="word2">
+                <div class="secret-word-header">
+                    <span class="secret-word-title">2. EL OJO INVISIBLE (9 letras)</span>
+                    <span class="word-status-badge">⏳ PENDIENTE</span>
+                </div>
+                <p class="secret-word-hint">Dispositivo benthamiano de vigilancia permanente: diseño de visibilidad asimétrica donde el individuo interioriza su propia custodia y autocensura.</p>
+                <div class="secret-letters-row">
+                    <div class="letter-box">P</div>
+                    <input type="text" class="letter-box letter-input" maxlength="1" data-correct="A" oninput="checkMultiSecretWord(this)" onkeydown="handleSecretKeydown(event, this)" placeholder="_">
+                    <input type="text" class="letter-box letter-input" maxlength="1" data-correct="N" oninput="checkMultiSecretWord(this)" onkeydown="handleSecretKeydown(event, this)" placeholder="_">
+                    <input type="text" class="letter-box letter-input" maxlength="1" data-correct="O" oninput="checkMultiSecretWord(this)" onkeydown="handleSecretKeydown(event, this)" placeholder="_">
+                    <input type="text" class="letter-box letter-input" maxlength="1" data-correct="P" oninput="checkMultiSecretWord(this)" onkeydown="handleSecretKeydown(event, this)" placeholder="_">
+                    <div class="letter-box">T</div>
+                    <input type="text" class="letter-box letter-input" maxlength="1" data-correct="I" oninput="checkMultiSecretWord(this)" onkeydown="handleSecretKeydown(event, this)" placeholder="_">
+                    <input type="text" class="letter-box letter-input" maxlength="1" data-correct="C" oninput="checkMultiSecretWord(this)" onkeydown="handleSecretKeydown(event, this)" placeholder="_">
+                    <input type="text" class="letter-box letter-input" maxlength="1" data-correct="O" oninput="checkMultiSecretWord(this)" onkeydown="handleSecretKeydown(event, this)" placeholder="_">
+                </div>
+            </div>
+
+            <!-- PALABRA 3: DISCIPLINA -->
+            <div class="secret-word-item" data-word-key="word3">
+                <div class="secret-word-header">
+                    <span class="secret-word-title">3. LA ORTOPEDIA SOCIAL (10 letras)</span>
+                    <span class="word-status-badge">⏳ PENDIENTE</span>
+                </div>
+                <p class="secret-word-hint">Técnica anatomo-política del encierro: modulación milimétrica del cuerpo, los horarios y las posturas para fabricar sujetos dóciles y útiles.</p>
+                <div class="secret-letters-row">
+                    <div class="letter-box">D</div>
+                    <input type="text" class="letter-box letter-input" maxlength="1" data-correct="I" oninput="checkMultiSecretWord(this)" onkeydown="handleSecretKeydown(event, this)" placeholder="_">
+                    <input type="text" class="letter-box letter-input" maxlength="1" data-correct="S" oninput="checkMultiSecretWord(this)" onkeydown="handleSecretKeydown(event, this)" placeholder="_">
+                    <input type="text" class="letter-box letter-input" maxlength="1" data-correct="C" oninput="checkMultiSecretWord(this)" onkeydown="handleSecretKeydown(event, this)" placeholder="_">
+                    <input type="text" class="letter-box letter-input" maxlength="1" data-correct="I" oninput="checkMultiSecretWord(this)" onkeydown="handleSecretKeydown(event, this)" placeholder="_">
+                    <input type="text" class="letter-box letter-input" maxlength="1" data-correct="P" oninput="checkMultiSecretWord(this)" onkeydown="handleSecretKeydown(event, this)" placeholder="_">
+                    <div class="letter-box">L</div>
+                    <input type="text" class="letter-box letter-input" maxlength="1" data-correct="I" oninput="checkMultiSecretWord(this)" onkeydown="handleSecretKeydown(event, this)" placeholder="_">
+                    <input type="text" class="letter-box letter-input" maxlength="1" data-correct="N" oninput="checkMultiSecretWord(this)" onkeydown="handleSecretKeydown(event, this)" placeholder="_">
+                    <input type="text" class="letter-box letter-input" maxlength="1" data-correct="A" oninput="checkMultiSecretWord(this)" onkeydown="handleSecretKeydown(event, this)" placeholder="_">
+                </div>
+            </div>
+
+            <!-- PALABRA 4: LIBERTAD -->
+            <div class="secret-word-item" data-word-key="word4">
+                <div class="secret-word-header">
+                    <span class="secret-word-title">4. EL DESPERTAR DEL SUJETO (8 letras)</span>
+                    <span class="word-status-badge">⏳ PENDIENTE</span>
+                </div>
+                <p class="secret-word-hint">Autonomía crítica y desobediencia reflexiva: la potencia ética de quebrar la sumisión voluntaria y reclamar la soberanía del propio pensar.</p>
+                <div class="secret-letters-row">
+                    <div class="letter-box">L</div>
+                    <input type="text" class="letter-box letter-input" maxlength="1" data-correct="I" oninput="checkMultiSecretWord(this)" onkeydown="handleSecretKeydown(event, this)" placeholder="_">
+                    <input type="text" class="letter-box letter-input" maxlength="1" data-correct="B" oninput="checkMultiSecretWord(this)" onkeydown="handleSecretKeydown(event, this)" placeholder="_">
+                    <input type="text" class="letter-box letter-input" maxlength="1" data-correct="E" oninput="checkMultiSecretWord(this)" onkeydown="handleSecretKeydown(event, this)" placeholder="_">
+                    <input type="text" class="letter-box letter-input" maxlength="1" data-correct="R" oninput="checkMultiSecretWord(this)" onkeydown="handleSecretKeydown(event, this)" placeholder="_">
+                    <div class="letter-box">T</div>
+                    <input type="text" class="letter-box letter-input" maxlength="1" data-correct="A" oninput="checkMultiSecretWord(this)" onkeydown="handleSecretKeydown(event, this)" placeholder="_">
+                    <input type="text" class="letter-box letter-input" maxlength="1" data-correct="D" oninput="checkMultiSecretWord(this)" onkeydown="handleSecretKeydown(event, this)" placeholder="_">
+                </div>
+            </div>
+        </div>
+
+        <div id="secretAllWordsMsg" style="margin-top: 0.5rem; font-size: 0.85rem; font-weight: 600; min-height: 20px; text-align: center;"></div>
+
+        <!-- CONTROLES Y SOLUCIONARIO (PARA IMPRESIÓN Y AUTOEVALUACIÓN) -->
+        <div class="game-controls-bar" style="margin-top: 0.6rem;">
+            <button class="game-action-btn secondary" onclick="resetGameActivity()">🔄 Reiniciar Desafío Completo</button>
+            <button class="game-action-btn" onclick="toggleSolutionBox()">📜 Ver Solucionario Invertido</button>
+        </div>
+
+        <!-- SOLUCIONARIO INVERTIDO 180° EN IMPRESIÓN / DESPLEGABLE EN WEB -->
+        <div class="solution-box" id="gameSolutionBox">
+            <div class="solution-title">🗝️ SOLUCIONARIO MAESTRO Y CLAVE DE RESPUESTAS</div>
+            <div class="solution-content">
+                <div>
+                    <strong style="color: var(--accent-gold);">FASE 1: TRÍADAS DEL PODER</strong>
+                    <ul style="padding-left: 1.2rem; margin-top: 0.15rem; list-style-type: square;">
+                        <li><strong>Tríada 1 (Disciplina):</strong> <code>[ 1 - D - III ]</code> (Pupitres ➔ "Jueguen a estudiar" ➔ Cuerpos dóciles).</li>
+                        <li><strong>Tríada 2 (Resistencia):</strong> <code>[ 2 - C - I ]</code> (Megáfono ➔ Rap y protesta ➔ La Resistencia).</li>
+                        <li><strong>Tríada 3 (Panóptico):</strong> <code>[ 3 - B - II ]</code> (Ojo ➔ Alerta "¡Mario Grande!" ➔ El Panóptico).</li>
+                        <li><strong>Tríada 4 (Castigo):</strong> <code>[ 4 - A - IV ]</code> (Billetes ➔ Condena por un celular ➔ Castigo desigual).</li>
+                    </ul>
+                </div>
+                <div>
+                    <strong style="color: var(--accent-cyan);">FASE 2 Y CRIPTOGRAMAS DE ESCAPE</strong>
+                    <ul style="padding-left: 1.2rem; margin-top: 0.15rem; list-style-type: square;">
+                        <li><strong>Preguntas Test:</strong> 1: <code>[ B ]</code> | 2: <code>[ B ]</code> | 3: <code>[ A ]</code>.</li>
+                        <li><strong>Palabra 1:</strong> <code>R-E-S-I-S-T-E-N-C-I-A</code></li>
+                        <li><strong>Palabra 2:</strong> <code>P-A-N-O-P-T-I-C-O</code></li>
+                        <li><strong>Palabra 3:</strong> <code>D-I-S-C-I-P-L-I-N-A</code></li>
+                        <li><strong>Palabra 4:</strong> <code>L-I-B-E-R-T-A-D</code></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL LIGHTBOX PARA AMPLIAR EL COLLAGE -->
+    <div id="collageModal" class="collage-modal" onclick="closeCollageModal(event)">
+        <div class="modal-content-wrap">
+            <button class="modal-close-btn" onclick="closeCollageModal(event)" aria-label="Cerrar">✕</button>
+            <img src="revista_collage_poder_hd.jpg" alt="Collage Editorial de Filosofía del Poder Ampliado" class="modal-img">
+            <p class="modal-caption">Revista LUMEN — Fanzine Original: "PODER, PANÓPTICO &amp; RESISTENCIA"</p>
+        </div>
+    </div>
+
+    <script>
+        function openCollageModal() {
+            const modal = document.getElementById('collageModal');
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeCollageModal(event) {
+            if (!event || event.target.id === 'collageModal' || event.target.classList.contains('modal-close-btn') || event.target.tagName === 'BUTTON') {
+                const modal = document.getElementById('collageModal');
+                if (modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            }
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const modal = document.getElementById('collageModal');
+                if (modal && modal.classList.contains('active')) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            }
+        });
+
+        /* =========================================================
+           LÓGICA INTERACTIVA DEL JUEGO: "LOS HILOS DEL PODER"
+        ========================================================= */
+        const gameState = {
+            selected: { c: null, m: null, f: null },
+            matchedTriads: new Set(),
+            quizScored: { 1: false, 2: false, 3: false },
+            score: 0
+        };
+
+        const triadExplanations = {
+            "disciplina": "¡Correcto! Los pupitres y marionetas conectan con 'jueguen a estudiar' y la idea de Foucault sobre formar cuerpos dóciles.",
+            "resistencia": "¡Exacto! El megáfono y el puño en alto representan el rap de Garo y la música que demuestran que donde hay poder, hay resistencia.",
+            "panoptico": "¡Muy bien! El ojo y las cámaras reflejan el miedo a las requisas de La Modelo y el control panóptico donde uno mismo se vigila.",
+            "castigo": "¡Brillante! El reloj y el dinero evidencian que el sistema castiga con dureza al pobre que roba un celular y perdona al rico."
+        };
+
+        function selectGameNode(col, targetId) {
+            const btn = document.querySelector(`.game-node-btn[data-col="${col}"][data-id="${targetId}"]`);
+            if (!btn || btn.classList.contains('matched')) return;
+
+            document.querySelectorAll(`.game-node-btn[data-col="${col}"]`).forEach(el => el.classList.remove('selected'));
+
+            if (gameState.selected[col] === targetId) {
+                gameState.selected[col] = null;
+            } else {
+                gameState.selected[col] = targetId;
+                btn.classList.add('selected');
+            }
+
+            const { c, m, f } = gameState.selected;
+            const feedbackEl = document.getElementById('gameMatchFeedback');
+
+            if (c && m && f) {
+                if (c === m && m === f) {
+                    // Tríada correcta
+                    gameState.matchedTriads.add(c);
+                    document.querySelectorAll(`.game-node-btn[data-id="${c}"]`).forEach(el => {
+                        el.classList.remove('selected');
+                        el.classList.add('matched');
+                    });
+                    
+                    // Actualizar casillero del investigador automáticamente
+                    syncDetectiveSlot(c);
+
+                    gameState.score += 15;
+                    if (gameState.matchedTriads.size === 4) gameState.score += 5;
+                    updateGameStatus();
+
+                    feedbackEl.style.color = '#86efac';
+                    feedbackEl.innerHTML = `✅ <strong>¡Tríada lograda!</strong> ${triadExplanations[c]}`;
+                    
+                    gameState.selected = { c: null, m: null, f: null };
+                } else {
+                    feedbackEl.style.color = '#fca5a5';
+                    feedbackEl.innerHTML = '❌ <em>Esta combinación no corresponde. Relaciona el símbolo con su escena directa y el concepto filosófico.</em>';
+                    
+                    setTimeout(() => {
+                        document.querySelectorAll('.game-node-btn.selected').forEach(el => el.classList.remove('selected'));
+                        gameState.selected = { c: null, m: null, f: null };
+                    }, 1000);
+                }
+            } else {
+                feedbackEl.style.color = 'var(--accent-gold-light)';
+                const faltantes = [];
+                if (!c) faltantes.push('un Símbolo');
+                if (!m) faltantes.push('una Escena');
+                if (!f) faltantes.push('un Concepto');
+                feedbackEl.innerHTML = `Elige ${faltantes.join(' y ')} para conectar.`;
+            }
+        }
+
+        const triadSlotsData = {
+            "disciplina": { slotId: "slotDisciplina", mediaVal: "D", foucaultVal: "III" },
+            "resistencia": { slotId: "slotResistencia", mediaVal: "C", foucaultVal: "I" },
+            "panoptico": { slotId: "slotPanoptico", mediaVal: "B", foucaultVal: "II" },
+            "castigo": { slotId: "slotCastigo", mediaVal: "A", foucaultVal: "IV" }
+        };
+
+        function syncDetectiveSlot(triadKey) {
+            const data = triadSlotsData[triadKey];
+            if (!data) return;
+            const slotEl = document.getElementById(data.slotId);
+            if (slotEl) {
+                slotEl.classList.add('completed');
+                const inputs = slotEl.querySelectorAll('input');
+                if (inputs[0]) inputs[0].value = data.mediaVal;
+                if (inputs[1]) inputs[1].value = data.foucaultVal;
+            }
+        }
+
+        function manualCheckSlot(triadKey) {
+            const data = triadSlotsData[triadKey];
+            if (!data) return;
+            const slotEl = document.getElementById(data.slotId);
+            if (!slotEl) return;
+            const inputs = slotEl.querySelectorAll('input');
+            const v1 = (inputs[0]?.value || '').trim().toUpperCase();
+            const v2 = (inputs[1]?.value || '').trim().toUpperCase();
+
+            if (v1 === data.mediaVal && v2 === data.foucaultVal) {
+                slotEl.classList.add('completed');
+                if (!gameState.matchedTriads.has(triadKey)) {
+                    gameState.matchedTriads.add(triadKey);
+                    document.querySelectorAll(`.game-node-btn[data-id="${triadKey}"]`).forEach(el => el.classList.add('matched'));
+                    gameState.score += 15;
+                    if (gameState.matchedTriads.size === 4) gameState.score += 5;
+                    updateGameStatus();
+                }
+            }
+        }
+
+        const secretWordsState = {
+            word1: { answer: "RESISTENCIA", solved: false },
+            word2: { answer: "PANOPTICO", solved: false },
+            word3: { answer: "DISCIPLINA", solved: false },
+            word4: { answer: "LIBERTAD", solved: false }
+        };
+
+        function handleSecretKeydown(e, inputEl) {
+            if (e.key === 'Backspace' && !inputEl.value) {
+                const allInputs = Array.from(inputEl.closest('.secret-letters-row').querySelectorAll('input'));
+                const curIdx = allInputs.indexOf(inputEl);
+                if (curIdx > 0) {
+                    allInputs[curIdx - 1].focus();
+                }
+            }
+        }
+
+        function checkMultiSecretWord(inputEl) {
+            const val = (inputEl.value || '').trim().toUpperCase();
+            inputEl.value = val;
+
+            // Auto avanzar al siguiente input si se ingresó un carácter
+            if (val) {
+                const allInputs = Array.from(inputEl.closest('.secret-letters-row').querySelectorAll('input'));
+                const curIdx = allInputs.indexOf(inputEl);
+                if (curIdx >= 0 && curIdx < allInputs.length - 1) {
+                    allInputs[curIdx + 1].focus();
+                }
+            }
+
+            const wordItem = inputEl.closest('.secret-word-item');
+            if (!wordItem) return;
+            const wordKey = wordItem.getAttribute('data-word-key');
+            const inputs = wordItem.querySelectorAll('.letter-box.letter-input');
+            let isWordComplete = true;
+            let allFilled = true;
+
+            inputs.forEach(inp => {
+                const curVal = (inp.value || '').trim().toUpperCase();
+                if (!curVal) allFilled = false;
+                if (curVal !== inp.getAttribute('data-correct')) {
+                    isWordComplete = false;
+                }
+            });
+
+            const badge = wordItem.querySelector('.word-status-badge');
+            if (isWordComplete) {
+                wordItem.classList.add('completed');
+                inputs.forEach(inp => inp.classList.add('correct'));
+                if (badge) {
+                    badge.innerText = '✅ DESCIFRADA';
+                    badge.style.borderColor = '#22c55e';
+                    badge.style.color = '#86efac';
+                }
+                secretWordsState[wordKey].solved = true;
+            } else {
+                wordItem.classList.remove('completed');
+                inputs.forEach(inp => inp.classList.remove('correct'));
+                if (badge) {
+                    badge.innerText = '⏳ PENDIENTE';
+                    badge.style.borderColor = 'var(--accent-gold)';
+                    badge.style.color = 'var(--accent-gold-light)';
+                }
+                secretWordsState[wordKey].solved = false;
+            }
+
+            const solvedCount = Object.values(secretWordsState).filter(w => w.solved).length;
+            const msgEl = document.getElementById('secretAllWordsMsg');
+            
+            if (solvedCount === 4) {
+                if (msgEl) {
+                    msgEl.style.color = '#86efac';
+                    msgEl.innerHTML = '🎉 <strong>¡DESAFÍO TOTAL COMPLETADO!</strong> Has descifrado las 4 palabras: <u>RESISTENCIA</u>, <u>PANÓPTICO</u>, <u>DISCIPLINA</u> y <u>LIBERTAD</u> (+20 pts).';
+                }
+                if (!gameState.allSecretsBonus) {
+                    gameState.allSecretsBonus = true;
+                    gameState.score = Math.min(100, gameState.score + 20);
+                    updateGameStatus();
+                }
+            } else if (msgEl) {
+                if (solvedCount > 0) {
+                    msgEl.style.color = 'var(--accent-gold-light)';
+                    msgEl.innerHTML = `Palabras descifradas: <strong>${solvedCount} de 4</strong>. ¡Sigue con las demás!`;
+                } else {
+                    msgEl.innerHTML = '';
+                }
+            }
+        }
+
+        function checkQuizAnswer(qNum, opt, isCorrect) {
+            const card = document.getElementById(`qCard${qNum}`);
+            const feedback = document.getElementById(`qFeed${qNum}`);
+            if (!card || !feedback) return;
+
+            const labels = card.querySelectorAll('.quiz-option-label');
+            labels.forEach(lbl => {
+                lbl.classList.remove('correct', 'incorrect');
+                const radio = lbl.querySelector('input');
+                if (radio && radio.value === opt) {
+                    lbl.classList.add(isCorrect ? 'correct' : 'incorrect');
+                }
+            });
+
+            feedback.className = `quiz-feedback active ${isCorrect ? 'success' : 'error'}`;
+            if (isCorrect) {
+                feedback.innerHTML = '<strong>¡Correcto!</strong> Has interpretado con exactitud el mensaje del collage.';
+                if (!gameState.quizScored[qNum]) {
+                    gameState.quizScored[qNum] = true;
+                    gameState.score += 10;
+                    if (gameState.quizScored[1] && gameState.quizScored[2] && gameState.quizScored[3] && gameState.matchedTriads.size === 4) {
+                        gameState.score = 100;
+                    }
+                    updateGameStatus();
+                }
+            } else {
+                feedback.innerHTML = '<strong>Revisa de nuevo:</strong> Esta opción no responde al significado del collage ni a la crítica sobre el poder.';
+            }
+        }
+
+        function updateGameStatus() {
+            const countEl = document.getElementById('gameMatchesCount');
+            const scoreEl = document.getElementById('gameScoreVal');
+            const badgeEl = document.getElementById('gameRankBadge');
+
+            if (countEl) countEl.innerText = gameState.matchedTriads.size;
+            if (scoreEl) scoreEl.innerText = gameState.score;
+
+            if (badgeEl) {
+                if (gameState.score >= 100) {
+                    badgeEl.innerText = '🏆 Filósofo Emancipado (100%)';
+                    badgeEl.style.borderColor = '#22c55e';
+                    badgeEl.style.color = '#86efac';
+                } else if (gameState.score >= 60) {
+                    badgeEl.innerText = '⚡ Crítico de la Resistencia';
+                    badgeEl.style.borderColor = 'var(--accent-gold)';
+                    badgeEl.style.color = 'var(--accent-gold-light)';
+                } else if (gameState.score >= 30) {
+                    badgeEl.innerText = '🔍 Analista Disciplinario';
+                    badgeEl.style.borderColor = 'var(--accent-cyan)';
+                    badgeEl.style.color = '#bae6fd';
+                } else {
+                    badgeEl.innerText = '🌱 Aprendiz del Panóptico';
+                }
+            }
+        }
+
+        function resetGameActivity() {
+            gameState.selected = { c: null, m: null, f: null };
+            gameState.matchedTriads.clear();
+            gameState.quizScored = { 1: false, 2: false, 3: false };
+            gameState.allSecretsBonus = false;
+            gameState.score = 0;
+
+            document.querySelectorAll('.game-node-btn').forEach(el => {
+                el.classList.remove('selected', 'matched');
+            });
+
+            document.querySelectorAll('.quiz-option-label').forEach(el => {
+                el.classList.remove('correct', 'incorrect');
+                const radio = el.querySelector('input');
+                if (radio) radio.checked = false;
+            });
+
+            document.querySelectorAll('.quiz-feedback').forEach(el => {
+                el.className = 'quiz-feedback';
+                el.innerHTML = '';
+            });
+
+            document.querySelectorAll('.detective-slot').forEach(el => {
+                el.classList.remove('completed');
+                el.querySelectorAll('input').forEach(inp => inp.value = '');
+            });
+
+            // Resetear las 4 palabras secretas
+            Object.keys(secretWordsState).forEach(k => secretWordsState[k].solved = false);
+            document.querySelectorAll('.secret-word-item').forEach(el => {
+                el.classList.remove('completed');
+                const badge = el.querySelector('.word-status-badge');
+                if (badge) {
+                    badge.innerText = '⏳ PENDIENTE';
+                    badge.style.borderColor = 'var(--accent-gold)';
+                    badge.style.color = 'var(--accent-gold-light)';
+                }
+                el.querySelectorAll('.letter-box.letter-input').forEach(inp => {
+                    inp.value = '';
+                    inp.classList.remove('correct');
+                });
+            });
+
+            const secretMsg = document.getElementById('secretAllWordsMsg');
+            if (secretMsg) secretMsg.innerHTML = '';
+
+            const feedbackEl = document.getElementById('gameMatchFeedback');
+            if (feedbackEl) feedbackEl.innerHTML = '';
+
+            const solutionBox = document.getElementById('gameSolutionBox');
+            if (solutionBox) solutionBox.classList.remove('visible');
+
+            updateGameStatus();
+        }
+
+        function toggleSolutionBox() {
+            const solutionBox = document.getElementById('gameSolutionBox');
+            if (solutionBox) {
+                solutionBox.classList.toggle('visible');
+            }
+        }
+    </script>
+</body>
+</html>
