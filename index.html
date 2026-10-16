@@ -1593,11 +1593,11 @@
         }
 
         /* -------------------------------------------------------------
-           FLUID & LUXURY MAGAZINE PRINT/PDF STYLING (SIN CORTES)
+           FLUID & LUXURY MAGAZINE PRINT/PDF STYLING (EXACT 7 PÁGINAS SIN CORTES)
         ------------------------------------------------------------- */
         @page {
-            size: A4 portrait;
-            margin: 6mm 8mm;
+            size: portrait;
+            margin: 4mm 6mm;
         }
 
         @media print {
@@ -1614,13 +1614,14 @@
                 margin: 0 !important;
                 display: block !important;
                 font-family: 'Plus Jakarta Sans', sans-serif !important;
+                width: 100% !important;
             }
 
-            /* CADA SECCIÓN ES UNA PÁGINA A4 LIMPIA SIN RECORTES */
+            /* CADA SECCIÓN ES UNA PÁGINA EXACTA SIN DESBORDES NI CORTES */
             .cover-page, .rights-container, .power-page, .media-page, .game-page {
                 width: 100% !important;
-                max-width: none !important;
-                min-height: 278mm !important;
+                max-width: 100% !important;
+                min-height: 0 !important;
                 height: auto !important;
                 max-height: none !important;
                 overflow: visible !important;
@@ -1639,79 +1640,90 @@
                 page-break-after: always !important;
                 break-inside: avoid !important;
                 page-break-inside: avoid !important;
-                padding: 0.7cm 0.9cm !important;
+                padding: 0.5cm 0.7cm !important;
             }
 
             .cover-page {
                 break-before: auto !important;
                 page-break-before: auto !important;
-                padding: 1cm !important;
+                padding: 0.5cm 0.7cm !important;
                 justify-content: space-between !important;
                 background: #08090d !important;
                 border: 1px solid rgba(212, 175, 55, 0.5) !important;
             }
 
             .rights-container {
-                padding: 0.7cm 0.9cm !important;
+                padding: 0.5cm 0.7cm !important;
                 background: #090b10 !important;
             }
 
             .power-page {
-                padding: 0.7cm 0.9cm !important;
+                padding: 0.5cm 0.7cm !important;
                 background: #08090d !important;
                 align-items: center !important;
             }
 
             .media-page {
-                padding: 0.6cm 0.8cm !important;
+                padding: 0.45cm 0.7cm !important;
                 background: #0d1017 !important;
-                gap: 0.35rem !important;
+                gap: 0.25rem !important;
             }
 
             .game-page {
-                padding: 0.6cm 0.8cm !important;
+                padding: 0.45cm 0.7cm !important;
                 background: #0d1017 !important;
-                gap: 0.35rem !important;
+                gap: 0.25rem !important;
             }
 
-            /* Portada vertical (3:4) completa */
+            /* Portada vertical (3:4) completa en 1 sola hoja */
             .cover-artwork-hero {
                 width: fit-content !important;
                 max-width: 100% !important;
                 margin: 0 auto !important;
                 border: 1px solid rgba(212, 175, 55, 0.4) !important;
-                padding: 4px !important;
+                padding: 3px !important;
                 background: #11141c !important;
             }
             .cover-artwork-hero img {
-                height: 165mm !important;
+                max-height: 135mm !important;
+                height: auto !important;
                 width: auto !important;
                 max-width: 100% !important;
                 object-fit: contain !important;
                 display: block !important;
+                margin: 0 auto !important;
             }
             .cover-header { margin-bottom: 0 !important; }
             .cover-title {
                 color: #d4af37 !important;
                 font-family: 'Cinzel', serif !important;
+                font-size: 3.2rem !important;
+                line-height: 1.05 !important;
             }
-            .cover-subtitle { color: #f3e5ab !important; }
+            .cover-subtitle { color: #f3e5ab !important; font-size: 1.15rem !important; margin-top: 0.2rem !important; }
             .cover-tag {
                 background: rgba(212, 175, 55, 0.15) !important;
                 color: #f3e5ab !important;
                 border: 1px solid #d4af37 !important;
+                font-size: 0.75rem !important;
             }
             .cover-footer {
                 color: #cbd5e1 !important;
                 border-top: 1px solid rgba(212, 175, 55, 0.3) !important;
+                padding-top: 0.4rem !important;
+                margin-top: 0.4rem !important;
+                font-size: 0.75rem !important;
             }
 
-            /* PÁGINA 2: Árbol de Derechos */
-            .rights-header { margin-bottom: 0 !important; }
+            /* PÁGINA 2: Árbol de Derechos Completo en 1 hoja */
+            .rights-header { margin-bottom: 0.15rem !important; }
             .rights-main-title {
                 color: #d4af37 !important;
                 font-family: 'Cinzel', serif !important;
+                font-size: 1.6rem !important;
+                margin-bottom: 0.1rem !important;
             }
+            .rights-tree-hint { display: none !important; }
             .rights-tree {
                 width: fit-content !important;
                 max-width: 100% !important;
@@ -1721,21 +1733,24 @@
                 background: #0d1017 !important;
             }
             .rights-tree-img {
-                height: 228mm !important;
+                max-height: 180mm !important;
+                height: auto !important;
                 width: auto !important;
                 max-width: 100% !important;
+                display: block !important;
+                margin: 0 auto !important;
             }
             .tree-node {
                 animation: none !important;
                 box-shadow: 0 0 0 2px #d4af37, 0 0 10px rgba(212, 175, 55, 0.5) !important;
             }
 
-            /* PÁGINA 3: Collage de Poder */
+            /* PÁGINA 3: Collage de Poder Completo en 1 hoja */
             .power-header-area { margin-bottom: 0 !important; }
             .power-main-title {
                 color: #d4af37 !important;
                 font-family: 'Cinzel', serif !important;
-                font-size: 1.9rem !important;
+                font-size: 1.65rem !important;
                 margin-bottom: 2mm !important;
             }
             .power-main-title span { color: #ffffff !important; }
@@ -1747,11 +1762,11 @@
                 box-shadow: 0 0 25px rgba(0,0,0,0.9) !important;
                 transform: none !important;
                 margin: 0 auto !important;
-                padding: 4px !important;
+                padding: 3px !important;
             }
             .power-artwork-img {
-                height: 202mm !important;
-                max-height: 202mm !important;
+                max-height: 175mm !important;
+                height: auto !important;
                 width: auto !important;
                 max-width: 100% !important;
                 object-fit: contain !important;
@@ -2010,35 +2025,38 @@
             .secret-words-grid {
                 display: flex !important;
                 flex-direction: column !important;
-                gap: 0.45rem !important;
-                margin-top: 0.3rem !important;
+                gap: 0.22rem !important;
+                margin-top: 0.15rem !important;
             }
             .secret-word-item {
                 background: #121520 !important;
                 border: 1px solid rgba(212, 175, 55, 0.3) !important;
                 border-left: 3px solid #d4af37 !important;
-                padding: 0.4rem 0.7rem !important;
+                padding: 0.2rem 0.55rem !important;
+                break-inside: avoid !important;
+                page-break-inside: avoid !important;
             }
             .secret-word-title {
                 color: #d4af37 !important;
-                font-size: 0.8rem !important;
+                font-size: 0.72rem !important;
             }
             .word-status-badge {
-                font-size: 0.65rem !important;
-                padding: 1px 6px !important;
+                font-size: 0.58rem !important;
+                padding: 1px 4px !important;
             }
             .secret-word-hint {
                 color: #94a3b8 !important;
-                font-size: 0.72rem !important;
-                margin-bottom: 0.3rem !important;
+                font-size: 0.62rem !important;
+                margin-bottom: 0.15rem !important;
+                line-height: 1.15 !important;
             }
             .letter-box {
-                width: 26px !important;
-                height: 30px !important;
+                width: 20px !important;
+                height: 23px !important;
                 border: 1.5px solid #d4af37 !important;
                 background: #171c28 !important;
                 color: #f3e5ab !important;
-                font-size: 0.92rem !important;
+                font-size: 0.8rem !important;
             }
             .letter-box.letter-input {
                 border: 1.5px dashed #d4af37 !important;
@@ -2051,35 +2069,38 @@
                 display: block !important;
                 background: #090b10 !important;
                 border: 1.5px dashed #d4af37 !important;
-                padding: 0.45rem 0.75rem !important;
-                margin-top: 0.4rem !important;
+                padding: 0.28rem 0.55rem !important;
+                margin-top: 0.2rem !important;
                 transform: rotate(180deg) !important;
                 transform-origin: center center !important;
+                break-inside: avoid !important;
+                page-break-inside: avoid !important;
             }
             .solution-title {
                 color: #d4af37 !important;
-                font-size: 0.75rem !important;
-                margin-bottom: 0.2rem !important;
+                font-size: 0.68rem !important;
+                margin-bottom: 0.1rem !important;
             }
             .solution-title::after {
                 content: " — (GIRA LA REVISTA 180° PARA COMPROBAR)";
                 color: #f3e5ab;
-                font-size: 0.68rem;
+                font-size: 0.6rem;
             }
             .solution-content {
-                font-size: 0.68rem !important;
-                gap: 0.6rem !important;
+                font-size: 0.6rem !important;
+                gap: 0.4rem !important;
                 color: #cbd5e1 !important;
+                line-height: 1.2 !important;
             }
-            .solution-content ul { margin-top: 0.1rem !important; }
-            .solution-content li { margin-bottom: 0.1rem !important; }
+            .solution-content ul { margin-top: 0.05rem !important; padding-left: 0.9rem !important; }
+            .solution-content li { margin-bottom: 0.05rem !important; }
             .solution-content strong { color: #f3e5ab !important; }
             .solution-content code {
                 background: #181c28 !important;
                 color: #86efac !important;
                 border: 1px solid rgba(34, 197, 94, 0.4) !important;
                 padding: 1px 3px !important;
-                font-size: 0.68rem !important;
+                font-size: 0.6rem !important;
             }
         }
     </style>
