@@ -7,7 +7,7 @@
     <!-- Google Fonts para tipografía editorial de alto nivel -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Cinzel:wght@400;600;700;900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Permanent+Marker&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -1592,6 +1592,1218 @@
             }
         }
 
+
+        /* -------------------------------------------------------------
+           SISTEMA DE PÁGINAS REVERSIBLES 3D — EFECTO VOLTEO DE AREPA 🫓
+        ------------------------------------------------------------- */
+        .flip-page-container {
+            perspective: 2500px;
+            -webkit-perspective: 2500px;
+            width: 100%;
+            margin: 0 auto 2.5rem auto;
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        .flip-container-cover {
+            max-width: 900px;
+        }
+
+        .flip-container-rights {
+            max-width: 1100px;
+        }
+
+        .flip-container-power,
+        .flip-container-media {
+            max-width: 1200px;
+        }
+
+        /* Barra de acción para voltear la página */
+        .flip-action-bar {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-bottom: 0.65rem;
+            padding: 0 0.2rem;
+            gap: 0.5rem;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .btn-flip-trigger {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.22), rgba(20, 23, 31, 0.95));
+            border: 1.5px solid var(--accent-gold);
+            color: var(--accent-gold-light);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 700;
+            padding: 0.52rem 1.15rem;
+            border-radius: 9999px;
+            cursor: pointer;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45), inset 0 0 10px rgba(212, 175, 55, 0.15);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        .btn-flip-trigger:hover {
+            background: linear-gradient(135deg, var(--accent-gold), #b8860b);
+            color: #08090d;
+            transform: translateY(-2px) scale(1.025);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+        }
+
+        .btn-flip-trigger:active {
+            transform: translateY(1px) scale(0.98);
+        }
+
+        .flip-icon-bounce {
+            display: inline-block;
+            font-size: 1.15rem;
+            transition: transform 0.4s ease;
+        }
+
+        .btn-flip-trigger:hover .flip-icon-bounce {
+            transform: rotate(180deg) scale(1.2);
+        }
+
+        .flip-badge-hint {
+            background: rgba(212, 175, 55, 0.2);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            color: var(--accent-gold-light);
+            font-size: 0.68rem;
+            font-weight: 800;
+            padding: 1px 7px;
+            border-radius: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .btn-flip-trigger:hover .flip-badge-hint {
+            background: #08090d;
+            color: var(--accent-gold);
+            border-color: #08090d;
+        }
+
+        /* Tarjeta interior 3D */
+        .flip-card-inner {
+            display: grid;
+            grid-template-columns: 100%;
+            grid-template-rows: 100%;
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            position: relative;
+            width: 100%;
+            box-sizing: border-box;
+            transition: transform 0.85s cubic-bezier(0.34, 1.25, 0.64, 1);
+        }
+
+        .flip-page-container.is-flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        /* Keyframes: Efecto Voltear una Arepa (Toss, Lift, Spin & Sizzle) */
+        @keyframes flipArepaToBack {
+            0% {
+                transform: rotateY(0deg) translateY(0) scale(1);
+                filter: drop-shadow(0 15px 30px rgba(0,0,0,0.6));
+            }
+            40% {
+                transform: rotateY(90deg) translateY(-30px) scale(1.045);
+                filter: drop-shadow(0 40px 65px rgba(212, 175, 55, 0.4));
+            }
+            82% {
+                transform: rotateY(184deg) translateY(3px) scale(0.99);
+            }
+            100% {
+                transform: rotateY(180deg) translateY(0) scale(1);
+                filter: drop-shadow(0 20px 40px rgba(0,0,0,0.7));
+            }
+        }
+
+        @keyframes flipArepaToFront {
+            0% {
+                transform: rotateY(180deg) translateY(0) scale(1);
+                filter: drop-shadow(0 15px 30px rgba(0,0,0,0.6));
+            }
+            40% {
+                transform: rotateY(90deg) translateY(-30px) scale(1.045);
+                filter: drop-shadow(0 40px 65px rgba(212, 175, 55, 0.4));
+            }
+            82% {
+                transform: rotateY(-4deg) translateY(3px) scale(0.99);
+            }
+            100% {
+                transform: rotateY(0deg) translateY(0) scale(1);
+                filter: drop-shadow(0 20px 40px rgba(0,0,0,0.7));
+            }
+        }
+
+        .flip-page-container.animating-to-back .flip-card-inner {
+            animation: flipArepaToBack 0.85s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        .flip-page-container.animating-to-front .flip-card-inner {
+            animation: flipArepaToFront 0.85s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        /* Transición de visibilidad sincronizada en el aire (90°) */
+        @keyframes arepaHideFront {
+            0%, 48% {
+                visibility: visible;
+                opacity: 1;
+            }
+            50%, 100% {
+                visibility: hidden;
+                opacity: 0;
+            }
+        }
+
+        @keyframes arepaShowBack {
+            0%, 48% {
+                visibility: hidden;
+                opacity: 0;
+            }
+            50%, 100% {
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+
+        .flip-page-container.animating-to-back .flip-card-front {
+            animation: arepaHideFront 0.85s forwards;
+        }
+
+        .flip-page-container.animating-to-back .flip-card-back {
+            animation: arepaShowBack 0.85s forwards;
+        }
+
+        .flip-page-container.animating-to-front .flip-card-front {
+            animation: arepaShowBack 0.85s forwards;
+        }
+
+        .flip-page-container.animating-to-front .flip-card-back {
+            animation: arepaHideFront 0.85s forwards;
+        }
+
+        /* Caras Frente y Revés */
+        .flip-card-front,
+        .flip-card-back {
+            grid-area: 1 / 1 / 2 / 2;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+
+        .flip-card-front {
+            transform: rotateY(0deg);
+            z-index: 2;
+        }
+
+        .flip-card-back {
+            transform: rotateY(180deg);
+            z-index: 1;
+        }
+
+        /* Control estricto de visualización:
+           Cuando está volteado, el frente NO SE MUESTRA en absoluto.
+           Cuando NO está volteado, el revés NO SE MUESTRA en absoluto. */
+        .flip-page-container:not(.is-flipped):not(.animating-to-back):not(.animating-to-front) .flip-card-front {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            pointer-events: auto;
+            z-index: 2;
+        }
+        .flip-page-container:not(.is-flipped):not(.animating-to-back):not(.animating-to-front) .flip-card-back {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .flip-page-container.is-flipped:not(.animating-to-back):not(.animating-to-front) .flip-card-front {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .flip-page-container.is-flipped:not(.animating-to-back):not(.animating-to-front) .flip-card-back {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            pointer-events: auto;
+            z-index: 2;
+        }
+
+        /* Durante la animación 3D de volteo ambos existen para girar en el aire */
+        .flip-page-container.animating-to-back .flip-card-front,
+        .flip-page-container.animating-to-back .flip-card-back,
+        .flip-page-container.animating-to-front .flip-card-front,
+        .flip-page-container.animating-to-front .flip-card-back {
+            display: block !important;
+        }
+
+        /* -------------------------------------------------------------
+           DISEÑO EDITORIAL DEL REVÉS (CARA POSTERIOR CON ESPACIO)
+        ------------------------------------------------------------- */
+        
+            /* REVÉS PÁGINA 1 EN IMPRESIÓN (JHOANA GUADASMO) */
+            .reverse-cover {
+                padding: 0.5cm 0.7cm !important;
+                justify-content: space-between !important;
+                background: #08090d !important;
+            }
+
+            .reverse-artwork-card {
+                max-width: 100% !important;
+                margin: 0 auto !important;
+                gap: 0.3rem !important;
+            }
+
+            .reverse-artwork-hero {
+                border: 1px solid rgba(212, 175, 55, 0.4) !important;
+                padding: 2px !important;
+                background: #11141c !important;
+                box-shadow: none !important;
+            }
+
+            .reverse-jhoana-img {
+                max-height: 160mm !important;
+                height: auto !important;
+                width: auto !important;
+                max-width: 100% !important;
+                margin: 0 auto !important;
+                display: block !important;
+                object-fit: contain !important;
+            }
+
+            .artwork-zoom-hint {
+                display: none !important;
+            }
+
+            .reverse-author-badge {
+                background: #11141c !important;
+                border: 1px solid rgba(212, 175, 55, 0.4) !important;
+                padding: 0.2rem 0.8rem !important;
+            }
+
+            .author-role-label {
+                color: #cbd5e1 !important;
+                font-size: 0.75rem !important;
+            }
+
+            .author-name-highlight {
+                color: #d4af37 !important;
+                font-size: 0.85rem !important;
+            }
+
+            .page-reverse-content {
+            width: 100%;
+            min-height: 100%;
+            background-color: var(--bg-card);
+            background-image: 
+                radial-gradient(circle at 50% 12%, rgba(212, 175, 55, 0.09) 0%, transparent 65%),
+                linear-gradient(180deg, rgba(20, 23, 31, 0.98) 0%, rgba(10, 12, 16, 0.98) 100%);
+            border: 2px solid var(--accent-gold);
+            border-radius: clamp(8px, 2vw, 12px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.85);
+            padding: clamp(1.4rem, 4vw, 2.5rem);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-sizing: border-box;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reverse-header {
+            width: 100%;
+            border-bottom: 2px solid var(--accent-gold);
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .reverse-meta-badge {
+            display: inline-block;
+            font-size: clamp(0.72rem, 1.8vw, 0.85rem);
+            letter-spacing: 3px;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+            background: rgba(212, 175, 55, 0.12);
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            padding: 3px 14px;
+            border-radius: 9999px;
+        }
+
+        .reverse-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.6rem, 5vw, 2.6rem);
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            line-height: 1.15;
+            text-shadow: 0 3px 15px rgba(212, 175, 55, 0.35);
+        }
+
+        .reverse-subtitle {
+            font-family: 'Newsreader', serif;
+            font-style: italic;
+            font-size: clamp(0.95rem, 2.5vw, 1.25rem);
+            color: var(--accent-gold-light);
+            margin-top: 0.3rem;
+        }
+
+        .reverse-empty-space {
+            flex: 1;
+            min-height: 480px;
+            width: 100%;
+            border: 2px dashed rgba(212, 175, 55, 0.35);
+            border-radius: 12px;
+            background: rgba(10, 12, 16, 0.55);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: clamp(1.5rem, 3.5vw, 2.5rem);
+            margin: 1.2rem 0;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+            box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.6);
+        }
+
+        .reverse-empty-space:hover {
+            border-color: var(--accent-gold);
+            background: rgba(15, 18, 25, 0.75);
+        }
+
+        .empty-space-guide {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.6rem;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .empty-space-icon {
+            font-size: clamp(2.4rem, 5vw, 3.2rem);
+            opacity: 0.8;
+            filter: drop-shadow(0 2px 10px rgba(212, 175, 55, 0.35));
+        }
+
+        .empty-space-text {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.15rem, 3vw, 1.5rem);
+            color: var(--accent-gold);
+            font-weight: 700;
+            letter-spacing: 1.5px;
+        }
+
+        .empty-space-subtext {
+            font-size: clamp(0.85rem, 2vw, 0.98rem);
+            color: var(--text-muted);
+            font-style: italic;
+            font-family: 'Newsreader', serif;
+        }
+
+        .reverse-footer {
+            width: 100%;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            padding-top: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .btn-flip-return {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.22), rgba(20, 23, 31, 0.95));
+            border: 1.5px solid var(--accent-gold);
+            color: var(--accent-gold-light);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 0.5rem 1.15rem;
+            border-radius: 9999px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.45);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            touch-action: manipulation;
+        }
+
+        .btn-flip-return:hover {
+            background: linear-gradient(135deg, var(--accent-gold), #b8860b);
+            color: #08090d;
+            transform: translateY(-2px) scale(1.025);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.45);
+        }
+
+        .reverse-footer-note {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .btn-control-flip {
+            border-color: var(--accent-cyan);
+            color: #bae6fd;
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.18), rgba(20, 23, 31, 0.95));
+        }
+
+        .btn-control-flip:hover {
+            background: var(--accent-cyan);
+            color: #08090d;
+            box-shadow: 0 8px 25px rgba(56, 189, 248, 0.4);
+        }
+
+
+        /* -------------------------------------------------------------
+           ESTILOS REVÉS PÁGINA 1: FOTOMONTAJE FILOSÓFICO — JHOANA GUADASMO
+        ------------------------------------------------------------- */
+        .reverse-cover {
+            padding: clamp(1.2rem, 3.5vw, 2.2rem);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        .reverse-artwork-card {
+            width: 100%;
+            max-width: 660px;
+            margin: 0.5rem auto 1rem auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            box-sizing: border-box;
+        }
+
+        .reverse-artwork-hero {
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid var(--accent-gold);
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8), 0 0 25px rgba(212, 175, 55, 0.18);
+            position: relative;
+            cursor: pointer;
+            background: #08090d;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .reverse-artwork-hero:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 22px 45px rgba(0, 0, 0, 0.9), 0 0 30px rgba(212, 175, 55, 0.35);
+        }
+
+        .reverse-jhoana-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        .artwork-zoom-hint {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(10, 12, 16, 0.88);
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold-light);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 20px;
+            pointer-events: none;
+            backdrop-filter: blur(4px);
+            letter-spacing: 0.5px;
+        }
+
+        .reverse-author-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: rgba(20, 23, 31, 0.92);
+            border: 1.5px solid var(--accent-gold);
+            padding: 0.45rem 1.25rem;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            max-width: 100%;
+        }
+
+        .author-avatar-chip {
+            font-size: 1.15rem;
+        }
+
+        .author-info-group {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .author-role-label {
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .author-name-highlight {
+            color: var(--accent-gold);
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+
+        /* -------------------------------------------------------------
+           ESTILOS REVÉS PÁGINA 2: PODER, CONTROL Y RESISTENCIA — JOHANA GUADASMO
+        ------------------------------------------------------------- */
+        .reverse-rights {
+            padding: clamp(1.2rem, 3.5vw, 2.2rem);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        .reverse-rights-content {
+            width: 100%;
+            max-width: 860px;
+            margin: 0.4rem auto 0.9rem auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.1rem;
+            box-sizing: border-box;
+        }
+
+        .reverse-quote-card {
+            width: 100%;
+            background: linear-gradient(135deg, rgba(20, 23, 31, 0.95), rgba(13, 16, 23, 0.98));
+            border: 1.5px solid rgba(212, 175, 55, 0.4);
+            border-left: 4px solid var(--accent-gold);
+            border-radius: 12px;
+            padding: clamp(1rem, 2.8vw, 1.5rem) clamp(1rem, 3vw, 1.8rem);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.65), inset 0 0 25px rgba(0, 0, 0, 0.35);
+            position: relative;
+            text-align: left;
+        }
+
+        .reverse-quote-card::before {
+            content: "“";
+            font-family: 'Cinzel', serif;
+            font-size: 3.8rem;
+            line-height: 1;
+            color: rgba(212, 175, 55, 0.2);
+            position: absolute;
+            top: 0.1rem;
+            left: 0.7rem;
+            pointer-events: none;
+        }
+
+        .reverse-quote-text {
+            font-family: 'Newsreader', serif;
+            font-size: clamp(0.98rem, 2.3vw, 1.12rem);
+            line-height: 1.65;
+            color: #f1f5f9;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+
+        .reverse-gallery-grid {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.2rem;
+            box-sizing: border-box;
+        }
+
+        .reverse-photo-card {
+            background: #11141e;
+            border: 1.5px solid rgba(212, 175, 55, 0.35);
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
+        }
+
+        .reverse-photo-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 18px 36px rgba(0, 0, 0, 0.8), 0 0 22px rgba(212, 175, 55, 0.28);
+        }
+
+        .reverse-photo-frame {
+            position: relative;
+            width: 100%;
+            height: 240px;
+            overflow: hidden;
+            cursor: pointer;
+            background: #08090d;
+        }
+
+        .reverse-photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .reverse-photo-frame:hover img {
+            transform: scale(1.05);
+        }
+
+        .reverse-photo-caption {
+            padding: 0.75rem 0.95rem;
+            text-align: left;
+            background: rgba(14, 17, 24, 0.96);
+            border-top: 1px solid rgba(212, 175, 55, 0.25);
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .reverse-photo-tag {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .reverse-photo-desc {
+            font-size: 0.83rem;
+            color: var(--text-muted);
+            line-height: 1.35;
+        }
+
+        /* -------------------------------------------------------------
+           ESTILOS REVÉS PÁGINA 3: COLLAGE & FANZINE DE RESISTENCIA — KAREN LARA
+        ------------------------------------------------------------- */
+        .reverse-power {
+            padding: clamp(1.2rem, 3.5vw, 2.2rem);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            box-sizing: border-box;
+            width: 100%;
+            background: radial-gradient(circle at 50% 30%, rgba(230, 57, 70, 0.08), rgba(10, 12, 16, 0.98));
+        }
+
+        .reverse-power-content {
+            width: 100%;
+            max-width: 900px;
+            margin: 0.4rem auto 0.9rem auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.3rem;
+            box-sizing: border-box;
+        }
+
+        /* MANIFIESTO EN PAPEL CUADRICULADO RASGADO (ESTILO CUADERNO PUNK COOL) */
+        .zine-notebook-card {
+            width: 100%;
+            position: relative;
+            background-color: #0d1117;
+            background-image: 
+                linear-gradient(rgba(56, 189, 248, 0.09) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(56, 189, 248, 0.09) 1px, transparent 1px);
+            background-size: 22px 22px;
+            border: 2px solid rgba(212, 175, 55, 0.5);
+            border-radius: 6px;
+            padding: clamp(1.2rem, 3vw, 1.8rem) clamp(1.2rem, 3.5vw, 2.2rem);
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8), inset 0 0 30px rgba(0, 0, 0, 0.5);
+            text-align: left;
+            transform: rotate(-0.6deg);
+            transition: transform 0.3s ease;
+        }
+
+        .zine-notebook-card:hover {
+            transform: rotate(0deg) scale(1.01);
+        }
+
+        /* Cinta adhesiva / washi tape que sostiene el cuaderno */
+        .tape-strip {
+            position: absolute;
+            width: 110px;
+            height: 26px;
+            background: rgba(243, 229, 171, 0.35);
+            backdrop-filter: blur(4px);
+            border: 1px dashed rgba(255, 255, 255, 0.4);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        .tape-top-center {
+            top: -13px;
+            left: 50%;
+            transform: translateX(-50%) rotate(2deg);
+        }
+
+        .tape-corner-left {
+            top: -10px;
+            left: 14px;
+            transform: rotate(-15deg);
+        }
+
+        .tape-corner-right {
+            top: -10px;
+            right: 14px;
+            transform: rotate(18deg);
+        }
+
+        /* Título Alocado con tipografía Marker y doble subrayado */
+        .zine-title-wrap {
+            margin-bottom: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .zine-punk-title {
+            font-family: 'Permanent Marker', cursive, sans-serif;
+            font-size: clamp(1.4rem, 4.5vw, 2.1rem);
+            color: var(--accent-gold-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(212, 175, 55, 0.5), 2px 2px 0px rgba(230, 57, 70, 0.7);
+            position: relative;
+            display: inline-block;
+        }
+
+        .zine-punk-title::after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-crimson), var(--accent-gold), var(--accent-cyan));
+            border-radius: 4px;
+            margin-top: 4px;
+        }
+
+        .zine-handwritten-text {
+            font-family: 'Caveat', cursive, sans-serif;
+            font-size: clamp(1.2rem, 3.2vw, 1.6rem);
+            line-height: 1.6;
+            color: #f8fafc;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .marker-tag {
+            display: inline-block;
+            padding: 0 6px;
+            border-radius: 4px;
+            font-weight: 700;
+            transform: rotate(-1deg);
+            margin: 0 2px;
+        }
+
+        .marker-salon {
+            background: rgba(230, 57, 70, 0.35);
+            color: #fca5a5;
+            border-bottom: 2px solid #ef4444;
+        }
+
+        .marker-camaras {
+            background: rgba(56, 189, 248, 0.35);
+            color: #bae6fd;
+            border-bottom: 2px solid #38bdf8;
+        }
+
+        .marker-vitrinas {
+            background: rgba(212, 175, 55, 0.35);
+            color: #fef08a;
+            border-bottom: 2px solid #eab308;
+        }
+
+        .zine-punchline-box {
+            margin-top: 0.9rem;
+            background: linear-gradient(135deg, rgba(230, 57, 70, 0.25), rgba(212, 175, 55, 0.18));
+            border-left: 4px solid var(--accent-crimson);
+            padding: 0.6rem 1rem;
+            border-radius: 4px;
+            font-family: 'Permanent Marker', cursive, sans-serif;
+            font-size: clamp(1rem, 2.6vw, 1.25rem);
+            color: var(--accent-gold-light);
+            letter-spacing: 0.5px;
+            line-height: 1.4;
+        }
+
+        /* GALERÍA DE FOTOS RASGADAS TIPO REVISTA / FANZINE SCRAPBOOK */
+        .zine-ripped-gallery {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.2rem;
+            box-sizing: border-box;
+            perspective: 1000px;
+        }
+
+        @media (max-width: 800px) {
+            .zine-ripped-gallery {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+        .ripped-photo-item {
+            position: relative;
+            background: #ffffff;
+            padding: 7px 7px 12px 7px;
+            border-radius: 2px;
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.75), 0 4px 10px rgba(0, 0, 0, 0.5);
+            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Efecto de inclinación y rasgado imperfecto */
+        .ripped-photo-item.photo-salon {
+            transform: rotate(-2.8deg);
+        }
+
+        .ripped-photo-item.photo-camaras {
+            transform: rotate(2.4deg) translateY(-4px);
+        }
+
+        .ripped-photo-item.photo-vitrinas {
+            transform: rotate(-1.8deg);
+        }
+
+        .ripped-photo-item:hover {
+            transform: rotate(0deg) scale(1.05) translateY(-8px);
+            z-index: 10;
+            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.9), 0 0 25px rgba(212, 175, 55, 0.4);
+        }
+
+        .ripped-img-wrap {
+            position: relative;
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .ripped-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .ripped-photo-item:hover .ripped-img-wrap img {
+            transform: scale(1.08);
+        }
+
+        .ripped-photo-footer {
+            margin-top: 8px;
+            text-align: center;
+        }
+
+        .ripped-caption-badge {
+            display: inline-block;
+            background: #0d1117;
+            color: var(--accent-gold-light);
+            font-family: 'Permanent Marker', cursive, sans-serif;
+            font-size: 0.85rem;
+            padding: 3px 8px;
+            border-radius: 3px;
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            letter-spacing: 0.5px;
+            transform: rotate(1deg);
+        }
+
+        .ripped-caption-sub {
+            font-family: 'Caveat', cursive, sans-serif;
+            font-size: 1.05rem;
+            color: #1e293b;
+            font-weight: 700;
+            margin-top: 4px;
+            line-height: 1.15;
+        }
+
+        /* -------------------------------------------------------------
+           ESTILOS REVÉS PÁGINA 4: BIOPODER & RESISTENCIA DIGITAL — KAREN LARA
+        ------------------------------------------------------------- */
+        .reverse-media {
+            padding: clamp(1.2rem, 3.5vw, 2.2rem);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            box-sizing: border-box;
+            width: 100%;
+            background: radial-gradient(circle at 50% 20%, rgba(56, 189, 248, 0.08), rgba(10, 12, 16, 0.98));
+        }
+
+        .reverse-cyber-content {
+            width: 100%;
+            max-width: 900px;
+            margin: 0.4rem auto 0.9rem auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.2rem;
+            box-sizing: border-box;
+        }
+
+        /* TERMINAL / FEED DE RESISTENCIA DIGITAL */
+        .cyber-manifesto-terminal {
+            width: 100%;
+            background: linear-gradient(135deg, rgba(16, 22, 34, 0.92), rgba(10, 14, 22, 0.98));
+            border: 1.5px solid rgba(56, 189, 248, 0.4);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8), 0 0 25px rgba(56, 189, 248, 0.12);
+            text-align: left;
+            position: relative;
+        }
+
+        .cyber-terminal-header {
+            background: rgba(10, 14, 22, 0.95);
+            border-bottom: 1px solid rgba(56, 189, 248, 0.25);
+            padding: 0.55rem 1.1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .cyber-status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #38bdf8;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background: #ef4444;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #ef4444;
+            animation: pulse-dot 1.5s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.85); }
+        }
+
+        .cyber-mode-tag {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--accent-gold-light);
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            padding: 2px 8px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .cyber-manifesto-body {
+            padding: clamp(1rem, 2.8vw, 1.5rem) clamp(1rem, 3vw, 1.8rem);
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .cyber-manifesto-paragraph {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(0.95rem, 2.2vw, 1.08rem);
+            line-height: 1.65;
+            color: #e2e8f0;
+        }
+
+        .cyber-code-tag {
+            color: #38bdf8;
+            font-weight: 700;
+            font-family: monospace;
+            background: rgba(56, 189, 248, 0.12);
+            padding: 1px 6px;
+            border-radius: 4px;
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            margin-right: 4px;
+            font-size: 0.88rem;
+        }
+
+        .cyber-resistance-highlight {
+            color: #fef08a;
+            font-weight: 600;
+            background: linear-gradient(90deg, rgba(212, 175, 55, 0.18), transparent);
+            padding: 4px 8px;
+            border-radius: 4px;
+            border-left: 3px solid var(--accent-gold);
+            display: block;
+            margin-top: 0.4rem;
+            line-height: 1.5;
+        }
+
+        /* GALERÍA DIGITAL / HOLOGRÁFICA EN 3 COLUMNAS */
+        .cyber-devices-grid {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.2rem;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 800px) {
+            .cyber-devices-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+        }
+
+        .cyber-device-card {
+            background: rgba(14, 18, 28, 0.95);
+            border: 1.5px solid rgba(56, 189, 248, 0.3);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.7);
+        }
+
+        .cyber-device-card:hover {
+            transform: translateY(-5px);
+            border-color: #38bdf8;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.85), 0 0 25px rgba(56, 189, 248, 0.3);
+        }
+
+        .cyber-frame-wrap {
+            position: relative;
+            width: 100%;
+            height: 230px;
+            overflow: hidden;
+            cursor: pointer;
+            background: #06080d;
+        }
+
+        .cyber-frame-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .cyber-device-card:hover .cyber-frame-wrap img {
+            transform: scale(1.06);
+        }
+
+        /* Overlay HUD futurista sobre la imagen */
+        .cyber-hud-overlay {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .hud-tag {
+            background: rgba(10, 14, 22, 0.85);
+            border: 1px solid rgba(56, 189, 248, 0.5);
+            color: #bae6fd;
+            font-size: 0.68rem;
+            font-family: monospace;
+            padding: 2px 7px;
+            border-radius: 4px;
+            backdrop-filter: blur(4px);
+            letter-spacing: 0.5px;
+        }
+
+        .cyber-device-footer {
+            padding: 0.8rem 0.95rem;
+            background: rgba(11, 15, 23, 0.98);
+            border-top: 1px solid rgba(56, 189, 248, 0.2);
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .cyber-device-title {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: #38bdf8;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .cyber-device-desc {
+            font-size: 0.82rem;
+            color: #94a3b8;
+            line-height: 1.35;
+        }
+
+        .cyber-author-badge {
+            border-color: rgba(56, 189, 248, 0.5);
+            background: rgba(14, 18, 28, 0.95);
+        }
+
+        .cyber-author-badge .author-name-highlight {
+            color: #38bdf8;
+        }
+
         /* -------------------------------------------------------------
            FLUID & LUXURY MAGAZINE PRINT/PDF STYLING (EXACT 7 PÁGINAS SIN CORTES)
         ------------------------------------------------------------- */
@@ -1617,8 +2829,76 @@
                 width: 100% !important;
             }
 
+            /* Desactivar 3D y aplanar tarjetas para impresión ordenada */
+            .flip-page-container {
+                perspective: none !important;
+                -webkit-perspective: none !important;
+                display: block !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            .flip-card-inner {
+                display: block !important;
+                transform: none !important;
+                -webkit-transform: none !important;
+                transform-style: flat !important;
+                -webkit-transform-style: flat !important;
+                animation: none !important;
+            }
+
+            .flip-action-bar,
+            .btn-flip-trigger,
+            .btn-flip-return,
+            .btn-control-flip,
+            .controls {
+                display: none !important;
+            }
+
+            /* ORDEN SECUENCIAL ESTRICTO DE PÁGINAS EN PDF/IMPRESIÓN:
+               Cada cara (frente y revés) se imprime como una hoja independiente y completa:
+               1. Portada (frente)
+               2. Portada (revés)
+               3. Derechos (frente)
+               4. Derechos (revés)
+               5. Poder (frente)
+               6. Poder (revés)
+               7. Banda sonora (frente)
+               8. Banda sonora (revés)
+               9. Taller juegos (páginas siguientes)
+            */
+            .flip-card-front,
+            .flip-card-back,
+            .game-page {
+                display: block !important;
+                position: static !important;
+                transform: none !important;
+                -webkit-transform: none !important;
+                backface-visibility: visible !important;
+                -webkit-backface-visibility: visible !important;
+                visibility: visible !important;
+                pointer-events: auto !important;
+                width: 100% !important;
+                height: auto !important;
+                min-height: 0 !important;
+                break-before: page !important;
+                page-break-before: always !important;
+                break-after: page !important;
+                page-break-after: always !important;
+                break-inside: avoid !important;
+                page-break-inside: avoid !important;
+            }
+
+            /* La portada es la primera hoja impresa, no requiere salto previo */
+            #flip-page-1 .flip-card-front {
+                break-before: auto !important;
+                page-break-before: auto !important;
+            }
+
             /* CADA SECCIÓN ES UNA PÁGINA EXACTA SIN DESBORDES NI CORTES */
-            .cover-page, .rights-container, .power-page, .media-page, .game-page {
+            .cover-page, .rights-container, .power-page, .media-page, .page-reverse-content, .game-page {
                 width: 100% !important;
                 max-width: 100% !important;
                 min-height: 0 !important;
@@ -1634,14 +2914,211 @@
                 border-radius: 4px !important;
                 box-sizing: border-box !important;
                 box-shadow: inset 0 0 30px rgba(0,0,0,0.8) !important;
-                break-before: page !important;
-                page-break-before: always !important;
-                break-after: page !important;
-                page-break-after: always !important;
                 break-inside: avoid !important;
                 page-break-inside: avoid !important;
                 padding: 0.5cm 0.7cm !important;
+                margin: 0 !important;
             }
+
+            .page-reverse-content {
+                justify-content: space-between !important;
+                background: #0d1017 !important;
+                padding: 0.6cm 0.8cm !important;
+            }
+
+            .reverse-header {
+                margin-bottom: 0.4rem !important;
+                padding-bottom: 0.35rem !important;
+                border-bottom: 1.5px solid rgba(212, 175, 55, 0.6) !important;
+            }
+
+            .reverse-meta-badge {
+                font-size: 0.7rem !important;
+                padding: 2px 8px !important;
+                background: rgba(212, 175, 55, 0.15) !important;
+                color: #f3e5ab !important;
+            }
+
+            .reverse-title {
+                color: #d4af37 !important;
+                font-size: 1.6rem !important;
+                margin-top: 0.15rem !important;
+            }
+
+            .reverse-subtitle {
+                color: #f3e5ab !important;
+                font-size: 0.92rem !important;
+            }
+
+            .reverse-empty-space {
+                background: #11141c !important;
+                border: 1.5px dashed rgba(212, 175, 55, 0.45) !important;
+                min-height: 180mm !important;
+                margin: 0.5rem 0 !important;
+                padding: 1rem !important;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: center !important;
+                align-items: center !important;
+            }
+
+            .empty-space-text {
+                color: #d4af37 !important;
+                font-size: 1.15rem !important;
+            }
+
+            .empty-space-subtext {
+                color: #cbd5e1 !important;
+                font-size: 0.85rem !important;
+            }
+
+            .reverse-footer-note {
+                color: #94a3b8 !important;
+                font-size: 0.72rem !important;
+            }
+
+            /* PÁGINA 4 IMPRESA: REVÉS DE NUESTROS DERECHOS (JOHANA GUADASMO) */
+            .reverse-rights-content {
+                gap: 0.3rem !important;
+                margin: 0.1rem auto !important;
+            }
+            .reverse-quote-card {
+                padding: 0.35rem 0.65rem !important;
+                border-left-width: 3px !important;
+                box-shadow: none !important;
+            }
+            .reverse-quote-card::before { display: none !important; }
+            .reverse-quote-text {
+                font-size: 0.78rem !important;
+                line-height: 1.3 !important;
+            }
+            .reverse-gallery-grid {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr !important;
+                gap: 0.45rem !important;
+            }
+            .reverse-photo-card {
+                box-shadow: none !important;
+                border: 1px solid rgba(212, 175, 55, 0.4) !important;
+            }
+            .reverse-photo-frame {
+                height: 80mm !important;
+            }
+            .reverse-photo-frame img {
+                object-fit: cover !important;
+            }
+            .reverse-photo-caption {
+                padding: 0.25rem 0.45rem !important;
+            }
+            .reverse-photo-tag {
+                font-size: 0.65rem !important;
+            }
+            .reverse-photo-desc {
+                font-size: 0.62rem !important;
+                line-height: 1.15 !important;
+            }
+
+            /* PÁGINA 6 IMPRESA: REVÉS DE PODER (FANZINE Y FOTOS RASGADAS - KAREN LARA) */
+            .reverse-power-content {
+                gap: 0.25rem !important;
+                margin: 0.1rem auto !important;
+            }
+            .zine-notebook-card {
+                padding: 0.35rem 0.65rem !important;
+                background-size: 15px 15px !important;
+                transform: none !important;
+                box-shadow: none !important;
+                border: 1px solid rgba(212, 175, 55, 0.45) !important;
+            }
+            .tape-strip { display: none !important; }
+            .zine-punk-title {
+                font-size: 1.05rem !important;
+                color: #d4af37 !important;
+            }
+            .zine-handwritten-text {
+                font-size: 0.82rem !important;
+                line-height: 1.25 !important;
+                color: #f8fafc !important;
+            }
+            .zine-punchline-box {
+                margin-top: 0.2rem !important;
+                padding: 0.2rem 0.5rem !important;
+                font-size: 0.72rem !important;
+            }
+            .zine-ripped-gallery {
+                display: grid !important;
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 0.35rem !important;
+            }
+            .ripped-photo-item {
+                transform: none !important;
+                padding: 3px !important;
+                box-shadow: none !important;
+                border: 1px solid rgba(212, 175, 55, 0.4) !important;
+                background: #0f121a !important;
+            }
+            .ripped-img-wrap {
+                height: 70mm !important;
+            }
+            .ripped-caption-badge {
+                font-size: 0.68rem !important;
+                padding: 1px 4px !important;
+            }
+            .ripped-caption-sub {
+                font-size: 0.68rem !important;
+                color: #cbd5e1 !important;
+                margin-top: 1px !important;
+            }
+
+            /* PÁGINA 8 IMPRESA: REVÉS DE BANDA SONORA (KAREN LARA - RESISTENCIA DIGITAL) */
+            .reverse-cyber-content {
+                gap: 0.25rem !important;
+                margin: 0.1rem auto !important;
+            }
+            .cyber-manifesto-terminal {
+                box-shadow: none !important;
+                border: 1px solid rgba(56, 189, 248, 0.4) !important;
+            }
+            .cyber-terminal-header {
+                padding: 0.25rem 0.6rem !important;
+            }
+            .cyber-manifesto-body {
+                padding: 0.35rem 0.65rem !important;
+                gap: 0.35rem !important;
+            }
+            .cyber-manifesto-paragraph {
+                font-size: 0.78rem !important;
+                line-height: 1.25 !important;
+            }
+            .cyber-resistance-highlight {
+                font-size: 0.76rem !important;
+                padding: 1px 4px !important;
+                margin-top: 0.15rem !important;
+            }
+            .cyber-devices-grid {
+                display: grid !important;
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 0.35rem !important;
+            }
+            .cyber-device-card {
+                box-shadow: none !important;
+                border: 1px solid rgba(56, 189, 248, 0.35) !important;
+                background: #0f131d !important;
+            }
+            .cyber-frame-wrap {
+                height: 70mm !important;
+            }
+            .cyber-device-footer {
+                padding: 0.25rem 0.45rem !important;
+            }
+            .cyber-device-title {
+                font-size: 0.65rem !important;
+            }
+            .cyber-device-desc {
+                font-size: 0.62rem !important;
+                line-height: 1.15 !important;
+            }
+
 
             .cover-page {
                 break-before: auto !important;
@@ -2109,83 +3586,326 @@
 
     <div class="controls">
         <button class="btn-control" onclick="window.print()">🖨️ Imprimir Revista Completa (PDF)</button>
+        <button class="btn-control btn-control-flip" onclick="toggleAllPagesFlip()">🫓 Voltear Todas las Páginas</button>
     </div>
 
     <!-- =========================================================
-         PÁGINA 1: PORTADA OFICIAL (COVER PAGE - LIMPIA)
+         PÁGINA 1: PORTADA OFICIAL (CON SISTEMA DE VOLTEO Y REVÉS)
     ========================================================= -->
-    <section class="cover-page">
-        <header class="cover-header">
-            <span class="cover-tag">REVISTA DE FILOSOFÍA</span>
-            <h1 class="cover-title">LUMEN</h1>
-            <p class="cover-subtitle">"La Luz de la Verdad"</p>
-        </header>
-
-        <div class="cover-artwork-hero">
-            <img src="revista_portada.jpg" alt="Portada Oficial de la Revista LUMEN">
+    <div class="flip-page-container flip-container-cover" id="flip-page-1">
+        <div class="flip-action-bar">
+            <button class="btn-flip-trigger" onclick="togglePageFlip(1)" title="Dar vuelta a la portada">
+                <span class="flip-icon-bounce">🫓</span>
+                <span class="flip-btn-text">Dar vuelta a la página (Ver Revés)</span>
+                
+            </button>
         </div>
 
-        <footer class="cover-footer">
-            <div>EDICIÓN Nº 01 | FILOSOFÍA</div>
-            <div>AUTORES: <strong>Miguel Moreno, Jaider Valencia, Johana Guadasmo y Karen Lara</strong></div>
-        </footer>
-    </section>
+        <div class="flip-card-inner">
+            <!-- FRENTE: PORTADA OFICIAL -->
+            <div class="flip-card-front">
+                <section class="cover-page">
+                    <header class="cover-header">
+                        <span class="cover-tag">REVISTA DE FILOSOFÍA</span>
+                        <h1 class="cover-title">LUMEN</h1>
+                        <p class="cover-subtitle">"La Luz de la Verdad"</p>
+                    </header>
 
-    <!-- =========================================================
-         PÁGINA 2: SECCIÓN DE DERECHOS (SOLO IMÁGENES CON HIPERVÍNCULOS)
-    ========================================================= -->
-    <section class="rights-container">
-        <header class="rights-header">
-            <h2 class="rights-main-title">NUESTROS DERECHOS</h2>
-            <p class="rights-tree-hint">👆 Toca o haz clic en cualquier esfera para abrir su contenido</p>
-        </header>
+                    <div class="cover-artwork-hero">
+                        <img src="revista_portada.jpg" alt="Portada Oficial de la Revista LUMEN">
+                    </div>
 
-        <!-- Árbol de derechos: cada círculo es un hipervínculo a su sección -->
-        <div class="rights-tree">
-            <img src="derechos_humanos.jpg" alt="Árbol de los Derechos Humanos" class="rights-tree-img">
-            <a href="https://canva.link/fqvf1w04blkn6w7" target="_blank" rel="noopener noreferrer" class="tree-node node-1ra" style="left: 63.62%; top: 19%;" title="Derechos de 1ra Generación" aria-label="Derechos de 1ra Generación">
-                <img src="derechos_1ra_gen.jpg" alt="Derechos de 1ra Generación">
-            </a>
-            <a href="https://www.youtube.com/results?search_query=derechos+de+segunda+generacion+santiago+quintero+" target="_blank" rel="noopener noreferrer" class="tree-node node-2da" style="left: 42.63%; top: 11.83%;" title="Derechos de 2da Generación" aria-label="Derechos de 2da Generación">
-                <img src="derechos_2da_gen.jpg" alt="Derechos de 2da Generación">
-            </a>
-            <a href="https://drive.google.com/file/d/1Jx-mGvMJaF_BeKitmlZw0QRGCIcsTkv0/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="tree-node node-3ra" style="left: 21.43%; top: 19%;" title="Derechos de 3ra Generación" aria-label="Derechos de 3ra Generación">
-                <img src="derechos_3ra_gen.jpg" alt="Derechos de 3ra Generación">
-            </a>
-            <a href="https://miguelmoreno123456789m-lab.github.io/Derechos_Ninos/" target="_blank" rel="noopener noreferrer" class="tree-node node-ninos" style="left: 14.73%; top: 49.83%;" title="Derechos de los Niños" aria-label="Derechos de los Niños">
-                <img src="derechos_ninos.jpg" alt="Derechos de los Niños">
-            </a>
-            <a href="https://huellitas-cerbero.vercel.app" target="_blank" rel="noopener noreferrer" class="tree-node node-anim" style="left: 70.76%; top: 50.5%;" title="Derechos de los Animales" aria-label="Derechos de los Animales">
-                <img src="derechos_animales.jpg" alt="Derechos de los Animales">
-            </a>
-        </div>
-    </section>
-
-    <!-- =========================================================
-         PÁGINA 3: ¿CÓMO EJERCEN PODER SOBRE NOSOTROS?
-    ========================================================= -->
-    <main class="magazine-container power-page" id="pagina-poder">
-        <header class="magazine-header" style="width: 100%;">
-            <div class="brand-title">LUMEN // FILOSOFÍA</div>
-            <div class="issue-meta">
-                Edición Especial: <span>Filosofía del Poder</span>
+                    <footer class="cover-footer">
+                        <div>EDICIÓN Nº 01 | FILOSOFÍA</div>
+                        <div>AUTORES: <strong>Miguel Moreno, Jaider Valencia, Johana Guadasmo y Karen Lara</strong></div>
+                    </footer>
+                </section>
             </div>
-        </header>
 
-        <div class="power-header-area">
-            <h2 class="power-main-title">¿CÓMO EJERCEN PODER <span>SOBRE NOSOTROS?</span></h2>
-        </div>
+            <!-- REVÉS: ESPACIO PARA INFORMACIÓN -->
+            <div class="flip-card-back">
+                <section class="page-reverse-content reverse-cover">
+                    <header class="reverse-header">
+                        <div class="reverse-meta-badge">REVISTA LUMEN // EDICIÓN 01</div>
+                        <h2 class="reverse-title">REVÉS DE LA PORTADA</h2>
+                        <p class="reverse-subtitle">Fotomontaje Filosófico · Por <strong>Jaider Valencia</strong></p>
+                    </header>
 
-        <div class="power-artwork-container" onclick="openCollageModal()" title="Clic para ampliar en alta resolución">
-            <img src="revista_collage_poder_hd.jpg" alt="¿Cómo ejercen poder sobre nosotros?" id="collagePoderImg" class="power-artwork-img">
-            <div class="power-artwork-zoom-badge">🔍 Clic para ampliar</div>
+                    <!-- OBRA EXCLUSIVA DE JAIDER VALENCIA EN EL REVÉS DE LA PORTADA -->
+                    <div class="reverse-artwork-card">
+                        <div class="reverse-artwork-hero" onclick="openJaiderModal()" title="Clic para ampliar en alta resolución">
+                            <img src="jhoana_guadasmo_poder.jpg" alt="Fotomontaje Filosófico sobre el Poder — Jaider Valencia" class="reverse-jhoana-img">
+                            <div class="artwork-zoom-hint">🔍 Clic para ampliar</div>
+                        </div>
+
+                        <div class="reverse-author-badge">
+                            <div class="author-avatar-chip">✍️</div>
+                            <div class="author-info-group">
+                                <span class="author-role-label">Fotomontaje y Reflexión:</span>
+                                <strong class="author-name-highlight">Jaider Valencia</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <footer class="reverse-footer">
+                        <button class="btn-flip-return" onclick="togglePageFlip(1)">
+                            <span>↩️</span> Volver a la Portada (Frente)
+                        </button>
+                        <div class="reverse-footer-note">LUMEN // FILOSOFÍA — PÁG. 1 (REVÉS) · AUTOR: JAIDER VALENCIA</div>
+                    </footer>
+                </section>
+            </div>
         </div>
-    </main>
+    </div>
 
     <!-- =========================================================
-         PÁGINA 4: BANDA SONORA Y MIRADA (CANCIÓN + DOCUMENTAL RTVC PLAY)
+         PÁGINA 2: SECCIÓN DE DERECHOS (CON SISTEMA DE VOLTEO Y REVÉS)
     ========================================================= -->
-    <section class="magazine-container media-page">
+    <div class="flip-page-container flip-container-rights" id="flip-page-2">
+        <div class="flip-action-bar">
+            <button class="btn-flip-trigger" onclick="togglePageFlip(2)" title="Dar vuelta a la página de derechos">
+                <span class="flip-icon-bounce">🫓</span>
+                <span class="flip-btn-text">Dar vuelta a la página (Ver Revés)</span>
+                
+            </button>
+        </div>
+
+        <div class="flip-card-inner">
+            <!-- FRENTE: ÁRBOL DE DERECHOS -->
+            <div class="flip-card-front">
+                <section class="rights-container">
+                    <header class="rights-header">
+                        <h2 class="rights-main-title">NUESTROS DERECHOS</h2>
+                        <p class="rights-tree-hint">👆 Toca o haz clic en cualquier esfera para abrir su contenido</p>
+                    </header>
+
+                    <!-- Árbol de derechos: cada círculo es un hipervínculo a su sección -->
+                    <div class="rights-tree">
+                        <img src="derechos_humanos.jpg" alt="Árbol de los Derechos Humanos" class="rights-tree-img">
+                        <a href="https://canva.link/fqvf1w04blkn6w7" target="_blank" rel="noopener noreferrer" class="tree-node node-1ra" style="left: 63.62%; top: 19%;" title="Derechos de 1ra Generación" aria-label="Derechos de 1ra Generación">
+                            <img src="derechos_1ra_gen.jpg" alt="Derechos de 1ra Generación">
+                        </a>
+                        <a href="https://www.youtube.com/results?search_query=derechos+de+segunda+generacion+santiago+quintero+" target="_blank" rel="noopener noreferrer" class="tree-node node-2da" style="left: 42.63%; top: 11.83%;" title="Derechos de 2da Generación" aria-label="Derechos de 2da Generación">
+                            <img src="derechos_2da_gen.jpg" alt="Derechos de 2da Generación">
+                        </a>
+                        <a href="https://drive.google.com/file/d/1Jx-mGvMJaF_BeKitmlZw0QRGCIcsTkv0/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="tree-node node-3ra" style="left: 21.43%; top: 19%;" title="Derechos de 3ra Generación" aria-label="Derechos de 3ra Generación">
+                            <img src="derechos_3ra_gen.jpg" alt="Derechos de 3ra Generación">
+                        </a>
+                        <a href="https://miguelmoreno123456789m-lab.github.io/Derechos_Ninos/" target="_blank" rel="noopener noreferrer" class="tree-node node-ninos" style="left: 14.73%; top: 49.83%;" title="Derechos de los Niños" aria-label="Derechos de los Niños">
+                            <img src="derechos_ninos.jpg" alt="Derechos de los Niños">
+                        </a>
+                        <a href="https://huellitas-cerbero.vercel.app" target="_blank" rel="noopener noreferrer" class="tree-node node-anim" style="left: 70.76%; top: 50.5%;" title="Derechos de los Animales" aria-label="Derechos de los Animales">
+                            <img src="derechos_animales.jpg" alt="Derechos de los Animales">
+                        </a>
+                    </div>
+                </section>
+            </div>
+
+            <!-- REVÉS: ESPACIO PARA INFORMACIÓN -->
+            <div class="flip-card-back">
+                <section class="page-reverse-content reverse-rights">
+                    <header class="reverse-header">
+                        <div class="reverse-meta-badge">LUMEN // DERECHOS HUMANOS &amp; PODER</div>
+                        <h2 class="reverse-title">REVÉS DE NUESTROS DERECHOS</h2>
+                        <p class="reverse-subtitle">Poder Institucional, Control y Autonomía · Por <strong>Johana Guadasmo</strong></p>
+                    </header>
+
+                    <div class="reverse-rights-content" id="espacio-info-reves-2">
+                        <!-- FRASE EDITORIAL FILOSÓFICA -->
+                        <div class="reverse-quote-card">
+                            <p class="reverse-quote-text">
+                                “Se han creado muchas formas de ejercer a través de la enseñanza, las reglas institucionales y las cámaras de seguridad, se orientan y controlan las acciones de los estudiantes. Estas formas de poder influyen en cómo actuamos, cómo aprendemos y cómo nos relacionamos dentro de la universidad, Pero es posible resistir si reconocemos las formas de poder que atraviesan nuestros cuerpos y aprendemos a cuestionarlas. Así como los animales pueden expresar sus preferencias y resistirse a ciertas indicaciones, las personas podemos ejercer nuestra autonomía, defender nuestros derechos y buscar relaciones basadas en el respeto, la libertad y la igualdad.”
+                            </p>
+                        </div>
+
+                        <!-- GALERÍA DE IMÁGENES / EVIDENCIAS FOTOGRÁFICAS -->
+                        <div class="reverse-gallery-grid">
+                            <!-- FOTO 1: VIGILANCIA Y CÁMARAS INSTITUCIONALES -->
+                            <div class="reverse-photo-card">
+                                <div class="reverse-photo-frame" onclick="openJhoanaCamaraModal()" title="Clic para ampliar en alta resolución">
+                                    <img src="jhoana_camaras_poder.jpg" alt="Vigilancia y Control Institucional — Cámaras Universitarias">
+                                    <div class="artwork-zoom-hint">🔍 Clic para ampliar</div>
+                                </div>
+                                <div class="reverse-photo-caption">
+                                    <span class="reverse-photo-tag">📹 Control &amp; Vigilancia</span>
+                                    <p class="reverse-photo-desc">Cámaras y normas institucionales que orientan y supervisan las conductas en los espacios universitarios.</p>
+                                </div>
+                            </div>
+
+                            <!-- FOTO 2: PREFERENCIA Y RESISTENCIA ANIMAL -->
+                            <div class="reverse-photo-card">
+                                <div class="reverse-photo-frame" onclick="openJhoanaAnimalesModal()" title="Clic para ampliar en alta resolución">
+                                    <img src="jhoana_resistencia_animales.jpg" alt="Preferencia, Autonomía y Resistencia Animal">
+                                    <div class="artwork-zoom-hint">🔍 Clic para ampliar</div>
+                                </div>
+                                <div class="reverse-photo-caption">
+                                    <span class="reverse-photo-tag">🐾 Resistencia &amp; Autonomía</span>
+                                    <p class="reverse-photo-desc">Así como los animales expresan sus preferencias ante indicaciones, las personas ejercemos autonomía y derechos.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- BADGE DE AUTORÍA EDITORIAL -->
+                        <div class="reverse-author-badge">
+                            <div class="author-avatar-chip">✍️</div>
+                            <div class="author-info-group">
+                                <span class="author-role-label">Reflexión y Evidencias Fotográficas:</span>
+                                <strong class="author-name-highlight">Johana Guadasmo</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <footer class="reverse-footer">
+                        <button class="btn-flip-return" onclick="togglePageFlip(2)">
+                            <span>↩️</span> Volver a Nuestros Derechos (Frente)
+                        </button>
+                        <div class="reverse-footer-note">LUMEN // FILOSOFÍA — PÁG. 2 (REVÉS) · AUTORA: JOHANA GUADASMO</div>
+                    </footer>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================
+         PÁGINA 3: ¿CÓMO EJERCEN PODER SOBRE NOSOTROS? (CON SISTEMA DE VOLTEO Y REVÉS)
+    ========================================================= -->
+    <div class="flip-page-container flip-container-power" id="flip-page-3">
+        <div class="flip-action-bar">
+            <button class="btn-flip-trigger" onclick="togglePageFlip(3)" title="Dar vuelta a la página del collage de poder">
+                <span class="flip-icon-bounce">🫓</span>
+                <span class="flip-btn-text">Dar vuelta a la página (Ver Revés)</span>
+                
+            </button>
+        </div>
+
+        <div class="flip-card-inner">
+            <!-- FRENTE: COLLAGE DE PODER -->
+            <div class="flip-card-front">
+                <main class="magazine-container power-page" id="pagina-poder" style="margin-bottom: 0;">
+                    <header class="magazine-header" style="width: 100%;">
+                        <div class="brand-title">LUMEN // FILOSOFÍA</div>
+                        <div class="issue-meta">
+                            Edición Especial: <span>Filosofía del Poder</span>
+                        </div>
+                    </header>
+
+                    <div class="power-header-area">
+                        <h2 class="power-main-title">¿CÓMO EJERCEN PODER <span>SOBRE NOSOTROS?</span></h2>
+                    </div>
+
+                    <div class="power-artwork-container" onclick="openCollageModal()" title="Clic para ampliar en alta resolución">
+                        <img src="revista_collage_poder_hd.jpg" alt="¿Cómo ejercen poder sobre nosotros?" id="collagePoderImg" class="power-artwork-img">
+                        <div class="power-artwork-zoom-badge">🔍 Clic para ampliar</div>
+                    </div>
+                </main>
+            </div>
+
+            <!-- REVÉS: ESPACIO PARA INFORMACIÓN -->
+            <div class="flip-card-back">
+                <section class="page-reverse-content reverse-power">
+                    <header class="reverse-header">
+                        <div class="reverse-meta-badge">LUMEN // FILOSOFÍA DEL PODER &amp; RESISTENCIA</div>
+                        <h2 class="reverse-title">REVÉS: PODER Y RESISTENCIA</h2>
+                        <p class="reverse-subtitle">Fanzine de Resistencia Corporal · Por <strong>Miguel Moreno</strong></p>
+                    </header>
+
+                    <div class="reverse-power-content" id="espacio-info-reves-3">
+                        <!-- MANIFIESTO ESTILO CUADERNO PUNK / ALOCADO CON LA LETRA EXTRAÍDA -->
+                        <div class="zine-notebook-card">
+                            <div class="tape-strip tape-top-center"></div>
+                            <div class="zine-title-wrap">
+                                <h3 class="zine-punk-title">¿Instrucciones para resistir al Poder?</h3>
+                            </div>
+                            <p class="zine-handwritten-text">
+                                Los cuerpos están atravesados por el poder en <span class="marker-tag marker-salon">el salón</span>, 
+                                <span class="marker-tag marker-camaras">bajo cámaras</span> y 
+                                <span class="marker-tag marker-vitrinas">frente a vitrinas</span>, han inventado muchas formas de hacerlo: 
+                                ordenar nuestros movimientos, vigilar nuestras acciones y decirnos cómo debemos vernos...
+                            </p>
+                            <div class="zine-punchline-box">
+                                ⚡ "...pero es posible resistir cuestionando si queremos seguir ese modelo o acciones."
+                            </div>
+                        </div>
+
+                        <!-- GALERÍA DE IMÁGENES RASGADAS TIPO REVISTA / FANZINE -->
+                        <div class="zine-ripped-gallery">
+                            <!-- FOTO 1: EL SALÓN -->
+                            <div class="ripped-photo-item photo-salon" onclick="openSalonModal()" title="Clic para ampliar">
+                                <div class="tape-strip tape-corner-left"></div>
+                                <div class="ripped-img-wrap">
+                                    <img src="poder_salon_disciplina.jpg" alt="El Salón — Disciplina Corporal y Espacial">
+                                    <div class="artwork-zoom-hint">🔍 Ampliar</div>
+                                </div>
+                                <div class="ripped-photo-footer">
+                                    <span class="ripped-caption-badge">🏫 EL SALÓN</span>
+                                    <p class="ripped-caption-sub">"Ordenar nuestros movimientos"</p>
+                                </div>
+                            </div>
+
+                            <!-- FOTO 2: BAJO CÁMARAS -->
+                            <div class="ripped-photo-item photo-camaras" onclick="openCamarasModal()" title="Clic para ampliar">
+                                <div class="tape-strip tape-top-center"></div>
+                                <div class="ripped-img-wrap">
+                                    <img src="poder_camaras_vigilancia.jpg" alt="Bajo Cámaras — Vigilancia Panóptica">
+                                    <div class="artwork-zoom-hint">🔍 Ampliar</div>
+                                </div>
+                                <div class="ripped-photo-footer">
+                                    <span class="ripped-caption-badge">📹 BAJO CÁMARAS</span>
+                                    <p class="ripped-caption-sub">"Vigilar nuestras acciones"</p>
+                                </div>
+                            </div>
+
+                            <!-- FOTO 3: FRENTE A VITRINAS -->
+                            <div class="ripped-photo-item photo-vitrinas" onclick="openVitrinasModal()" title="Clic para ampliar">
+                                <div class="tape-strip tape-corner-right"></div>
+                                <div class="ripped-img-wrap">
+                                    <img src="poder_vitrinas_cuerpos.jpg" alt="Frente a Vitrinas — Estándares y Modelos Corporales">
+                                    <div class="artwork-zoom-hint">🔍 Ampliar</div>
+                                </div>
+                                <div class="ripped-photo-footer">
+                                    <span class="ripped-caption-badge">🪞 FRENTE A VITRINAS</span>
+                                    <p class="ripped-caption-sub">"Decirnos cómo debemos vernos"</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- BADGE DE AUTORÍA EDITORIAL -->
+                        <div class="reverse-author-badge">
+                            <div class="author-avatar-chip">✍️</div>
+                            <div class="author-info-group">
+                                <span class="author-role-label">Fanzine y Registro Fotográfico:</span>
+                                <strong class="author-name-highlight">Miguel Moreno</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <footer class="reverse-footer">
+                        <button class="btn-flip-return" onclick="togglePageFlip(3)">
+                            <span>↩️</span> Volver al Collage de Poder (Frente)
+                        </button>
+                        <div class="reverse-footer-note">LUMEN // FILOSOFÍA — PÁG. 3 (REVÉS) · AUTOR: MIGUEL MORENO</div>
+                    </footer>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================
+         PÁGINA 4: BANDA SONORA Y MIRADA (CON SISTEMA DE VOLTEO Y REVÉS)
+    ========================================================= -->
+    <div class="flip-page-container flip-container-media" id="flip-page-4">
+        <div class="flip-action-bar">
+            <button class="btn-flip-trigger" onclick="togglePageFlip(4)" title="Dar vuelta a la página de cultura y resistencia">
+                <span class="flip-icon-bounce">🫓</span>
+                <span class="flip-btn-text">Dar vuelta a la página (Ver Revés)</span>
+                
+            </button>
+        </div>
+
+        <div class="flip-card-inner">
+            <!-- FRENTE: BANDA SONORA Y MIRADA -->
+            <div class="flip-card-front">
+<section class="magazine-container media-page" style="margin-bottom: 0;">
         <header class="magazine-header">
             <div class="brand-title">LUMEN // FILOSOFÍA</div>
             <div class="issue-meta">
@@ -2301,6 +4021,116 @@
             </ul>
         </section>
     </section>
+            </div>
+
+            <!-- REVÉS: ESPACIO PARA INFORMACIÓN -->
+            <div class="flip-card-back">
+                <section class="page-reverse-content reverse-media">
+                    <header class="reverse-header">
+                        <div class="reverse-meta-badge">LUMEN // VIGILANCIA DIGITAL &amp; AGENCIA</div>
+                        <h2 class="reverse-title">REVÉS: BIOPODER &amp; RESISTENCIA DIGITAL</h2>
+                        <p class="reverse-subtitle">Dispositivos de Vigilancia y Autonomía Digital · Por <strong>Karen Lara</strong></p>
+                    </header>
+
+                    <div class="reverse-cyber-content" id="espacio-info-reves-4">
+                        <!-- TERMINAL HOLOGRÁFICA / MANIFIESTO DIGITAL -->
+                        <div class="cyber-manifesto-terminal">
+                            <div class="cyber-terminal-header">
+                                <div class="cyber-status-pill">
+                                    <span class="live-dot"></span>
+                                    <span>LIVE FEED // BIOPODER Y VIGILANCIA COTIDIANA</span>
+                                </div>
+                                <span class="cyber-mode-tag">🛡️ MODO: RESISTENCIA VIRTUAL</span>
+                            </div>
+                            <div class="cyber-manifesto-body">
+                                <p class="cyber-manifesto-paragraph">
+                                    <span class="cyber-code-tag">[01. DISPOSITIVO]</span>
+                                    Los cuerpos están atravesados por el poder, que está presente en nuestra vida diaria mediante las normas y la vigilancia. Han inventado muchas formas de ejercerlo, como en los salones de clase, donde los profesores establecen normas y controlan el comportamiento de los estudiantes.
+                                </p>
+                                <p class="cyber-manifesto-paragraph cyber-resistance-highlight">
+                                    <span class="cyber-code-tag" style="border-color: var(--accent-gold); color: var(--accent-gold);">[02. AGENCIA]</span>
+                                    Pero es posible resistir si usamos las redes sociales con conciencia, elegimos qué contenido consumir y no dejamos que influyan en nuestras decisiones.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- GALERÍA HOLOGRÁFICA / TARJETAS SMART FEED (3 FOTOS DE KAREN LARA) -->
+                        <div class="cyber-devices-grid">
+                            <!-- DISPOSITIVO 1: VIGILANCIA PÚBLICA -->
+                            <div class="cyber-device-card" onclick="openKarenCamaraModal()" title="Clic para ampliar">
+                                <div class="cyber-frame-wrap">
+                                    <div class="cyber-hud-overlay">
+                                        <span class="hud-tag">CAM-01 // VIAL</span>
+                                        <span class="hud-tag">REC ● 4K</span>
+                                    </div>
+                                    <img src="karen_camara_vigilancia.png" alt="Vigilancia y Ojo Panóptico en el Espacio Público">
+                                    <div class="artwork-zoom-hint">🔍 Inspeccionar</div>
+                                </div>
+                                <div class="cyber-device-footer">
+                                    <div class="cyber-device-title">
+                                        <span>🛰️</span> Vigilancia y Ojo Panóptico
+                                    </div>
+                                    <p class="cyber-device-desc">Presencia constante en postes y vías públicas que condiciona la movilidad y los cuerpos.</p>
+                                </div>
+                            </div>
+
+                            <!-- DISPOSITIVO 2: EL AULA ESCOLAR -->
+                            <div class="cyber-device-card" onclick="openKarenSalonModal()" title="Clic para ampliar">
+                                <div class="cyber-frame-wrap">
+                                    <div class="cyber-hud-overlay">
+                                        <span class="hud-tag">NODE-02 // AULA</span>
+                                        <span class="hud-tag">NORM: ACTIVE</span>
+                                    </div>
+                                    <img src="karen_salon_normas.png" alt="Normas y Disciplina en el Salón de Clase">
+                                    <div class="artwork-zoom-hint">🔍 Inspeccionar</div>
+                                </div>
+                                <div class="cyber-device-footer">
+                                    <div class="cyber-device-title">
+                                        <span>🏫</span> Normas en el Aula Escolar
+                                    </div>
+                                    <p class="cyber-device-desc">Regulaciones docentes que estandarizan el comportamiento, posturas y atención de los alumnos.</p>
+                                </div>
+                            </div>
+
+                            <!-- DISPOSITIVO 3: REDES SOCIALES Y RESISTENCIA -->
+                            <div class="cyber-device-card" onclick="openKarenRedesModal()" title="Clic para ampliar">
+                                <div class="cyber-frame-wrap">
+                                    <div class="cyber-hud-overlay">
+                                        <span class="hud-tag">FEED-03 // SMARTPHONE</span>
+                                        <span class="hud-tag">AGENCY: 100%</span>
+                                    </div>
+                                    <img src="karen_redes_resistencia.jpg" alt="Agencia, Algoritmos y Resistencia en Redes Sociales">
+                                    <div class="artwork-zoom-hint">🔍 Inspeccionar</div>
+                                </div>
+                                <div class="cyber-device-footer">
+                                    <div class="cyber-device-title">
+                                        <span>📱</span> Redes y Resistencia Crítica
+                                    </div>
+                                    <p class="cyber-device-desc">Consumir conscientemente: elegir qué ver y blindar nuestra autonomía ante el algoritmo.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- BADGE DE AUTORÍA DIGITAL -->
+                        <div class="reverse-author-badge cyber-author-badge">
+                            <div class="author-avatar-chip">⚡</div>
+                            <div class="author-info-group">
+                                <span class="author-role-label">Curaduría Visual y Reflexión Digital:</span>
+                                <strong class="author-name-highlight">Karen Lara</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <footer class="reverse-footer">
+                        <button class="btn-flip-return" onclick="togglePageFlip(4)">
+                            <span>↩️</span> Volver a Banda Sonora y Mirada (Frente)
+                        </button>
+                        <div class="reverse-footer-note">LUMEN // FILOSOFÍA — PÁG. 4 (REVÉS) · AUTORA: KAREN LARA</div>
+                    </footer>
+                </section>
+            </div>
+        </div>
+    </div>
 
     <!-- =========================================================
          PÁGINA 5: TALLER CRÍTICO — FASE 1: CONEXIÓN DE HILOS
@@ -2687,6 +4517,33 @@
         </div>
     </section>
 
+
+    <!-- MODAL LIGHTBOX PARA AMPLIAR LA OBRA DE JAIDER VALENCIA (REVÉS 1) -->
+    <div id="jaiderModal" class="collage-modal" onclick="closeJaiderModal(event)">
+        <div class="modal-content-wrap">
+            <button class="modal-close-btn" onclick="closeJaiderModal(event)" aria-label="Cerrar">✕</button>
+            <img src="jhoana_guadasmo_poder.jpg" alt="Fotomontaje Filosófico — Jaider Valencia" class="modal-img">
+            <p class="modal-caption">Revista LUMEN — Fotomontaje Filosófico por <strong>Jaider Valencia</strong></p>
+        </div>
+    </div>
+
+    <!-- MODALES LIGHTBOX PARA AMPLIAR LAS FOTOGRAFÍAS DE JOHANA GUADASMO (REVÉS 2) -->
+    <div id="jhoanaCamaraModal" class="collage-modal" onclick="closeJhoanaCamaraModal(event)">
+        <div class="modal-content-wrap">
+            <button class="modal-close-btn" onclick="closeJhoanaCamaraModal(event)" aria-label="Cerrar">✕</button>
+            <img src="jhoana_camaras_poder.jpg" alt="Vigilancia, Normas y Cámaras Universitarias — Johana Guadasmo" class="modal-img">
+            <p class="modal-caption">Revista LUMEN — Vigilancia y Control Institucional en la Universidad · <strong>Johana Guadasmo</strong></p>
+        </div>
+    </div>
+
+    <div id="jhoanaAnimalesModal" class="collage-modal" onclick="closeJhoanaAnimalesModal(event)">
+        <div class="modal-content-wrap">
+            <button class="modal-close-btn" onclick="closeJhoanaAnimalesModal(event)" aria-label="Cerrar">✕</button>
+            <img src="jhoana_resistencia_animales.jpg" alt="Preferencia, Autonomía y Resistencia Animal — Johana Guadasmo" class="modal-img">
+            <p class="modal-caption">Revista LUMEN — Preferencias, Autonomía y Resistencia ante el Poder · <strong>Johana Guadasmo</strong></p>
+        </div>
+    </div>
+
     <!-- MODAL LIGHTBOX PARA AMPLIAR EL COLLAGE -->
     <div id="collageModal" class="collage-modal" onclick="closeCollageModal(event)">
         <div class="modal-content-wrap">
@@ -2696,7 +4553,229 @@
         </div>
     </div>
 
+    <!-- MODALES LIGHTBOX PARA AMPLIAR LAS FOTOGRAFÍAS RASGADAS DE MIGUEL MORENO (REVÉS 3) -->
+    <div id="salonModal" class="collage-modal" onclick="closeSalonModal(event)">
+        <div class="modal-content-wrap">
+            <button class="modal-close-btn" onclick="closeSalonModal(event)" aria-label="Cerrar">✕</button>
+            <img src="poder_salon_disciplina.jpg" alt="El Salón — Disciplina Corporal y Espacial" class="modal-img">
+            <p class="modal-caption">Revista LUMEN — El Salón: Disciplina Espacial y Disposición de Cuerpos · <strong>Miguel Moreno</strong></p>
+        </div>
+    </div>
+
+    <div id="camarasModal" class="collage-modal" onclick="closeCamarasModal(event)">
+        <div class="modal-content-wrap">
+            <button class="modal-close-btn" onclick="closeCamarasModal(event)" aria-label="Cerrar">✕</button>
+            <img src="poder_camaras_vigilancia.jpg" alt="Bajo Cámaras — Vigilancia Panóptica" class="modal-img">
+            <p class="modal-caption">Revista LUMEN — Bajo Cámaras: Vigilancia y Dispositivos Panópticos Urbanos · <strong>Miguel Moreno</strong></p>
+        </div>
+    </div>
+
+    <div id="vitrinasModal" class="collage-modal" onclick="closeVitrinasModal(event)">
+        <div class="modal-content-wrap">
+            <button class="modal-close-btn" onclick="closeVitrinasModal(event)" aria-label="Cerrar">✕</button>
+            <img src="poder_vitrinas_cuerpos.jpg" alt="Frente a Vitrinas — Cuerpos y Modelos Impuestos" class="modal-img">
+            <p class="modal-caption">Revista LUMEN — Frente a Vitrinas: Estándares Estéticos y Formas de Vestir · <strong>Miguel Moreno</strong></p>
+        </div>
+    </div>
+
+    <!-- MODALES LIGHTBOX PARA AMPLIAR LAS FOTOGRAFÍAS DE KAREN LARA (REVÉS 4) -->
+    <div id="karenCamaraModal" class="collage-modal" onclick="closeKarenCamaraModal(event)">
+        <div class="modal-content-wrap">
+            <button class="modal-close-btn" onclick="closeKarenCamaraModal(event)" aria-label="Cerrar">✕</button>
+            <img src="karen_camara_vigilancia.png" alt="Vigilancia y Ojo Panóptico en el Espacio Público" class="modal-img">
+            <p class="modal-caption">Revista LUMEN — Vigilancia Urbana y Dispositivos de Control en el Espacio Público · <strong>Karen Lara</strong></p>
+        </div>
+    </div>
+
+    <div id="karenSalonModal" class="collage-modal" onclick="closeKarenSalonModal(event)">
+        <div class="modal-content-wrap">
+            <button class="modal-close-btn" onclick="closeKarenSalonModal(event)" aria-label="Cerrar">✕</button>
+            <img src="karen_salon_normas.png" alt="Normas y Disciplina en el Salón de Clase" class="modal-img">
+            <p class="modal-caption">Revista LUMEN — Normas, Disciplina y Control de Conducta en el Aula · <strong>Karen Lara</strong></p>
+        </div>
+    </div>
+
+    <div id="karenRedesModal" class="collage-modal" onclick="closeKarenRedesModal(event)">
+        <div class="modal-content-wrap">
+            <button class="modal-close-btn" onclick="closeKarenRedesModal(event)" aria-label="Cerrar">✕</button>
+            <img src="karen_redes_resistencia.jpg" alt="Agencia, Algoritmos y Resistencia en Redes Sociales" class="modal-img">
+            <p class="modal-caption">Revista LUMEN — Resistencia Digital: Consumo Consciente y Autonomía ante el Algoritmo · <strong>Karen Lara</strong></p>
+        </div>
+    </div>
+
     <script>
+
+        function openJaiderModal() {
+            const modal = document.getElementById('jaiderModal');
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        // Alias para compatibilidad
+        function openJhoanaModal() {
+            openJaiderModal();
+        }
+
+        function closeJaiderModal(event) {
+            if (!event || event.target.id === 'jaiderModal' || event.target.classList.contains('modal-close-btn') || event.target.tagName === 'BUTTON') {
+                const modal = document.getElementById('jaiderModal');
+                if (modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            }
+        }
+
+        function closeJhoanaModal(event) {
+            closeJaiderModal(event);
+        }
+
+        function openJhoanaCamaraModal() {
+            const modal = document.getElementById('jhoanaCamaraModal');
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeJhoanaCamaraModal(event) {
+            if (!event || event.target.id === 'jhoanaCamaraModal' || event.target.classList.contains('modal-close-btn') || event.target.tagName === 'BUTTON') {
+                const modal = document.getElementById('jhoanaCamaraModal');
+                if (modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            }
+        }
+
+        function openJhoanaAnimalesModal() {
+            const modal = document.getElementById('jhoanaAnimalesModal');
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeJhoanaAnimalesModal(event) {
+            if (!event || event.target.id === 'jhoanaAnimalesModal' || event.target.classList.contains('modal-close-btn') || event.target.tagName === 'BUTTON') {
+                const modal = document.getElementById('jhoanaAnimalesModal');
+                if (modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            }
+        }
+
+        function openSalonModal() {
+            const modal = document.getElementById('salonModal');
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeSalonModal(event) {
+            if (!event || event.target.id === 'salonModal' || event.target.classList.contains('modal-close-btn') || event.target.tagName === 'BUTTON') {
+                const modal = document.getElementById('salonModal');
+                if (modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            }
+        }
+
+        function openCamarasModal() {
+            const modal = document.getElementById('camarasModal');
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeCamarasModal(event) {
+            if (!event || event.target.id === 'camarasModal' || event.target.classList.contains('modal-close-btn') || event.target.tagName === 'BUTTON') {
+                const modal = document.getElementById('camarasModal');
+                if (modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            }
+        }
+
+        function openVitrinasModal() {
+            const modal = document.getElementById('vitrinasModal');
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeVitrinasModal(event) {
+            if (!event || event.target.id === 'vitrinasModal' || event.target.classList.contains('modal-close-btn') || event.target.tagName === 'BUTTON') {
+                const modal = document.getElementById('vitrinasModal');
+                if (modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            }
+        }
+
+        function openKarenCamaraModal() {
+            const modal = document.getElementById('karenCamaraModal');
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeKarenCamaraModal(event) {
+            if (!event || event.target.id === 'karenCamaraModal' || event.target.classList.contains('modal-close-btn') || event.target.tagName === 'BUTTON') {
+                const modal = document.getElementById('karenCamaraModal');
+                if (modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            }
+        }
+
+        function openKarenSalonModal() {
+            const modal = document.getElementById('karenSalonModal');
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeKarenSalonModal(event) {
+            if (!event || event.target.id === 'karenSalonModal' || event.target.classList.contains('modal-close-btn') || event.target.tagName === 'BUTTON') {
+                const modal = document.getElementById('karenSalonModal');
+                if (modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            }
+        }
+
+        function openKarenRedesModal() {
+            const modal = document.getElementById('karenRedesModal');
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeKarenRedesModal(event) {
+            if (!event || event.target.id === 'karenRedesModal' || event.target.classList.contains('modal-close-btn') || event.target.tagName === 'BUTTON') {
+                const modal = document.getElementById('karenRedesModal');
+                if (modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            }
+        }
+
         function openCollageModal() {
             const modal = document.getElementById('collageModal');
             if (modal) {
@@ -2717,13 +4796,117 @@
 
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
-                const modal = document.getElementById('collageModal');
-                if (modal && modal.classList.contains('active')) {
-                    modal.classList.remove('active');
-                    document.body.style.overflow = '';
-                }
+                const modals = [
+                    'collageModal', 'jaiderModal', 'jhoanaCamaraModal', 'jhoanaAnimalesModal',
+                    'salonModal', 'camarasModal', 'vitrinasModal',
+                    'karenCamaraModal', 'karenSalonModal', 'karenRedesModal'
+                ];
+                modals.forEach(id => {
+                    const m = document.getElementById(id);
+                    if (m && m.classList.contains('active')) {
+                        m.classList.remove('active');
+                    }
+                });
+                document.body.style.overflow = '';
             }
         });
+
+
+        /* =========================================================
+           SISTEMA DE VOLTEO 3D DE PÁGINAS ("EFECTO AREPA")
+        ========================================================= */
+        function togglePageFlip(pageNum) {
+            const container = document.getElementById('flip-page-' + pageNum);
+            if (!container) return;
+
+            const isFlipped = container.classList.contains('is-flipped');
+            const front = container.querySelector('.flip-card-front');
+            const back = container.querySelector('.flip-card-back');
+
+            // Limpiar clases de animación previas
+            container.classList.remove('animating-to-back', 'animating-to-front');
+            void container.offsetWidth;
+
+            if (isFlipped) {
+                // Volver al frente
+                container.classList.add('animating-to-front');
+
+                // En el aire (380ms), alternar visibilidad
+                setTimeout(() => {
+                    if (back) back.style.visibility = 'hidden';
+                    if (front) front.style.visibility = 'visible';
+                }, 380);
+
+                setTimeout(() => {
+                    container.classList.remove('animating-to-front', 'is-flipped');
+                    if (back) {
+                        back.style.display = 'none';
+                        back.style.visibility = 'hidden';
+                    }
+                    if (front) {
+                        front.style.display = 'block';
+                        front.style.visibility = 'visible';
+                    }
+                    const btn = container.querySelector('.flip-action-bar .btn-flip-trigger');
+                    if (btn) {
+                        const textSpan = btn.querySelector('.flip-btn-text');
+                        if (textSpan) textSpan.innerText = 'Dar vuelta a la página (Ver Revés)';
+                    }
+                }, 800);
+            } else {
+                // Voltear hacia el revés
+                container.classList.add('animating-to-back');
+
+                // En el aire (380ms), alternar visibilidad
+                setTimeout(() => {
+                    if (front) front.style.visibility = 'hidden';
+                    if (back) back.style.visibility = 'visible';
+                }, 380);
+
+                setTimeout(() => {
+                    container.classList.remove('animating-to-back');
+                    container.classList.add('is-flipped');
+                    if (front) {
+                        front.style.display = 'none';
+                        front.style.visibility = 'hidden';
+                    }
+                    if (back) {
+                        back.style.display = 'block';
+                        back.style.visibility = 'visible';
+                    }
+                    const btn = container.querySelector('.flip-action-bar .btn-flip-trigger');
+                    if (btn) {
+                        const textSpan = btn.querySelector('.flip-btn-text');
+                        if (textSpan) textSpan.innerText = 'Volver al Frente';
+                    }
+                }, 800);
+            }
+        }
+
+        function toggleAllPagesFlip() {
+            let anyUnflipped = false;
+            for (let i = 1; i <= 4; i++) {
+                const c = document.getElementById('flip-page-' + i);
+                if (c && !c.classList.contains('is-flipped')) {
+                    anyUnflipped = true;
+                    break;
+                }
+            }
+
+            // Efecto dominó de volteo secuencial de arepas
+            for (let i = 1; i <= 4; i++) {
+                setTimeout(() => {
+                    const c = document.getElementById('flip-page-' + i);
+                    if (!c) return;
+                    const isFlipped = c.classList.contains('is-flipped');
+                    if (anyUnflipped && !isFlipped) {
+                        togglePageFlip(i);
+                    } else if (!anyUnflipped && isFlipped) {
+                        togglePageFlip(i);
+                    }
+                }, (i - 1) * 120);
+            }
+        }
 
         /* =========================================================
            LÓGICA INTERACTIVA DEL JUEGO: "LOS HILOS DEL PODER"
