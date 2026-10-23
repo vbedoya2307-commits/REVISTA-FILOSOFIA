@@ -1811,45 +1811,48 @@
             z-index: 1;
         }
 
-        /* Control estricto de visualización:
-           Cuando está volteado, el frente NO SE MUESTRA en absoluto.
-           Cuando NO está volteado, el revés NO SE MUESTRA en absoluto. */
-        .flip-page-container:not(.is-flipped):not(.animating-to-back):not(.animating-to-front) .flip-card-front {
-            display: block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-            pointer-events: auto;
-            z-index: 2;
-        }
-        .flip-page-container:not(.is-flipped):not(.animating-to-back):not(.animating-to-front) .flip-card-back {
-            display: none !important;
-            visibility: hidden !important;
-            opacity: 0 !important;
-            pointer-events: none;
-            z-index: 1;
-        }
+        /* Control estricto de visualización en pantalla interactiva:
+           Cuando está volteado, el frente NO SE MUESTRA en pantalla.
+           Cuando NO está volteado, el revés NO SE MUESTRA en pantalla.
+           (Aislado en @media screen para que NUNCA afecte la impresión/PDF) */
+        @media screen {
+            .flip-page-container:not(.is-flipped):not(.animating-to-back):not(.animating-to-front) .flip-card-front {
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                pointer-events: auto;
+                z-index: 2;
+            }
+            .flip-page-container:not(.is-flipped):not(.animating-to-back):not(.animating-to-front) .flip-card-back {
+                display: none !important;
+                visibility: hidden !important;
+                opacity: 0 !important;
+                pointer-events: none;
+                z-index: 1;
+            }
 
-        .flip-page-container.is-flipped:not(.animating-to-back):not(.animating-to-front) .flip-card-front {
-            display: none !important;
-            visibility: hidden !important;
-            opacity: 0 !important;
-            pointer-events: none;
-            z-index: 1;
-        }
-        .flip-page-container.is-flipped:not(.animating-to-back):not(.animating-to-front) .flip-card-back {
-            display: block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-            pointer-events: auto;
-            z-index: 2;
-        }
+            .flip-page-container.is-flipped:not(.animating-to-back):not(.animating-to-front) .flip-card-front {
+                display: none !important;
+                visibility: hidden !important;
+                opacity: 0 !important;
+                pointer-events: none;
+                z-index: 1;
+            }
+            .flip-page-container.is-flipped:not(.animating-to-back):not(.animating-to-front) .flip-card-back {
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                pointer-events: auto;
+                z-index: 2;
+            }
 
-        /* Durante la animación 3D de volteo ambos existen para girar en el aire */
-        .flip-page-container.animating-to-back .flip-card-front,
-        .flip-page-container.animating-to-back .flip-card-back,
-        .flip-page-container.animating-to-front .flip-card-front,
-        .flip-page-container.animating-to-front .flip-card-back {
-            display: block !important;
+            /* Durante la animación 3D de volteo ambos existen para girar en el aire */
+            .flip-page-container.animating-to-back .flip-card-front,
+            .flip-page-container.animating-to-back .flip-card-back,
+            .flip-page-container.animating-to-front .flip-card-front,
+            .flip-page-container.animating-to-front .flip-card-back {
+                display: block !important;
+            }
         }
 
         /* -------------------------------------------------------------
@@ -2829,72 +2832,97 @@
                 width: 100% !important;
             }
 
-            /* Desactivar 3D y aplanar tarjetas para impresión ordenada */
-            .flip-page-container {
+            /* Desactivar 3D y aplanar completamente contenedores para impresión */
+            .flip-page-container,
+            .flip-card-inner {
                 perspective: none !important;
                 -webkit-perspective: none !important;
                 display: block !important;
-                width: 100% !important;
-                max-width: 100% !important;
-                margin: 0 !important;
-                padding: 0 !important;
-            }
-
-            .flip-card-inner {
-                display: block !important;
+                position: static !important;
                 transform: none !important;
                 -webkit-transform: none !important;
                 transform-style: flat !important;
                 -webkit-transform-style: flat !important;
                 animation: none !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                border: none !important;
+                box-shadow: none !important;
+                break-inside: auto !important;
+                page-break-inside: auto !important;
+                break-before: auto !important;
+                page-break-before: auto !important;
+                break-after: auto !important;
+                page-break-after: auto !important;
             }
 
             .flip-action-bar,
             .btn-flip-trigger,
             .btn-flip-return,
             .btn-control-flip,
-            .controls {
+            .controls,
+            .artwork-zoom-hint,
+            .tree-tap-hint,
+            .rights-tree-hint,
+            .power-artwork-zoom-badge,
+            .collage-modal,
+            .game-controls-bar {
                 display: none !important;
             }
 
-            /* ORDEN SECUENCIAL ESTRICTO DE PÁGINAS EN PDF/IMPRESIÓN:
+            /* ORDEN SECUENCIAL ESTRICTO DE PÁGINAS EN PDF/IMPRESIÓN (INTERCALADO PERFECTO):
                Cada cara (frente y revés) se imprime como una hoja independiente y completa:
                1. Portada (frente)
-               2. Portada (revés)
-               3. Derechos (frente)
-               4. Derechos (revés)
-               5. Poder (frente)
-               6. Poder (revés)
-               7. Banda sonora (frente)
-               8. Banda sonora (revés)
-               9. Taller juegos (páginas siguientes)
+               2. Portada (revés - Jaider Valencia)
+               3. Derechos Humanos (frente)
+               4. Derechos Humanos (revés - Johana Guadasmo)
+               5. Poder y Cuerpos (frente)
+               6. Poder y Cuerpos (revés - Miguel Moreno)
+               7. Banda Sonora / Mirada (frente)
+               8. Banda Sonora / Mirada (revés - Karen Lara)
+               9. Taller Fase 1 (Hilos del Poder - sin revés)
+               10. Taller Fase 2 (Decodificador de Citas - sin revés)
+               11. Taller Fase 3 (Criptogramas - sin revés)
             */
-            .flip-card-front,
-            .flip-card-back,
-            .game-page {
+            html body .flip-page-container .flip-card-inner .flip-card-front,
+            html body .flip-page-container .flip-card-inner .flip-card-back,
+            html body .flip-page-container.is-flipped .flip-card-inner .flip-card-front,
+            html body .flip-page-container.is-flipped .flip-card-inner .flip-card-back,
+            html body .flip-card-front,
+            html body .flip-card-back,
+            html body .game-page {
                 display: block !important;
                 position: static !important;
+                visibility: visible !important;
+                opacity: 1 !important;
                 transform: none !important;
                 -webkit-transform: none !important;
                 backface-visibility: visible !important;
                 -webkit-backface-visibility: visible !important;
-                visibility: visible !important;
                 pointer-events: auto !important;
+                grid-area: auto !important;
+                float: none !important;
+                clear: both !important;
                 width: 100% !important;
+                max-width: 100% !important;
                 height: auto !important;
                 min-height: 0 !important;
-                break-before: page !important;
-                page-break-before: always !important;
-                break-after: page !important;
-                page-break-after: always !important;
+                box-sizing: border-box !important;
                 break-inside: avoid !important;
                 page-break-inside: avoid !important;
-            }
-
-            /* La portada es la primera hoja impresa, no requiere salto previo */
-            #flip-page-1 .flip-card-front {
+                break-after: page !important;
+                page-break-after: always !important;
                 break-before: auto !important;
                 page-break-before: auto !important;
+            }
+
+            /* La última hoja del taller concluye la revista sin dejar páginas en blanco */
+            html body .game-page-3,
+            html body #seccion-criptogramas {
+                break-after: auto !important;
+                page-break-after: auto !important;
             }
 
             /* CADA SECCIÓN ES UNA PÁGINA EXACTA SIN DESBORDES NI CORTES */
@@ -2975,6 +3003,32 @@
             .reverse-footer-note {
                 color: #94a3b8 !important;
                 font-size: 0.72rem !important;
+            }
+
+            /* PÁGINA 2 IMPRESA: REVÉS DE LA PORTADA (JAIDER VALENCIA) */
+            .reverse-cover {
+                padding: 0.5cm 0.7cm !important;
+                justify-content: space-between !important;
+            }
+            .reverse-cover .reverse-artwork-card {
+                margin: 0.2rem auto !important;
+                max-width: 100% !important;
+            }
+            .reverse-cover .reverse-artwork-hero {
+                border-radius: 6px !important;
+                max-height: 165mm !important;
+                width: fit-content !important;
+                margin: 0 auto !important;
+                box-shadow: none !important;
+            }
+            .reverse-cover .reverse-jhoana-img {
+                max-height: 165mm !important;
+                height: auto !important;
+                width: auto !important;
+                max-width: 100% !important;
+                object-fit: contain !important;
+                display: block !important;
+                margin: 0 auto !important;
             }
 
             /* PÁGINA 4 IMPRESA: REVÉS DE NUESTROS DERECHOS (JOHANA GUADASMO) */
@@ -3585,7 +3639,7 @@
 <body>
 
     <div class="controls">
-        <button class="btn-control" onclick="window.print()">🖨️ Imprimir Revista Completa (PDF)</button>
+        <button class="btn-control" onclick="prepararEImprimirRevista()">🖨️ Imprimir Revista Completa (PDF)</button>
         <button class="btn-control btn-control-flip" onclick="toggleAllPagesFlip()">🫓 Voltear Todas las Páginas</button>
     </div>
 
@@ -4907,6 +4961,51 @@
                 }, (i - 1) * 120);
             }
         }
+
+        /* =========================================================
+           IMPRESIÓN COMPLETA PDF INTERCALADA: FRENTE Y REVÉS
+        ========================================================= */
+        function prepararEImprimirRevista() {
+            // 1. Limpiar cualquier propiedad inline de visibilidad o display
+            document.querySelectorAll('.flip-card-front, .flip-card-back').forEach(el => {
+                el.style.removeProperty('display');
+                el.style.removeProperty('visibility');
+                el.style.removeProperty('opacity');
+            });
+
+            // 2. Ejecutar impresión nativa
+            setTimeout(() => {
+                window.print();
+            }, 60);
+        }
+
+        // Listeners nativos de ventana para garantizar que siempre se imprima intercalado
+        // tanto si se presiona el botón como si el usuario pulsa Ctrl + P
+        window.addEventListener('beforeprint', () => {
+            document.querySelectorAll('.flip-card-front, .flip-card-back').forEach(el => {
+                el.style.removeProperty('display');
+                el.style.removeProperty('visibility');
+                el.style.removeProperty('opacity');
+            });
+        });
+
+        window.addEventListener('afterprint', () => {
+            // Restaurar visualización en pantalla de acuerdo al estado volteado de cada página
+            for (let i = 1; i <= 4; i++) {
+                const c = document.getElementById('flip-page-' + i);
+                if (!c) continue;
+                const front = c.querySelector('.flip-card-front');
+                const back = c.querySelector('.flip-card-back');
+                const isFlipped = c.classList.contains('is-flipped');
+                if (isFlipped) {
+                    if (front) { front.style.display = 'none'; front.style.visibility = 'hidden'; }
+                    if (back) { back.style.display = 'block'; back.style.visibility = 'visible'; }
+                } else {
+                    if (front) { front.style.display = 'block'; front.style.visibility = 'visible'; }
+                    if (back) { back.style.display = 'none'; back.style.visibility = 'hidden'; }
+                }
+            }
+        });
 
         /* =========================================================
            LÓGICA INTERACTIVA DEL JUEGO: "LOS HILOS DEL PODER"
